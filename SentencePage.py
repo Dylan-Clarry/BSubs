@@ -4,6 +4,7 @@ from tkinter.messagebox import showinfo
 import os, settings, helper
 import globalvars as gv
 import homepage_functions as hpf
+import sentence_page_functions as spf
 import subprocess as sp
 import condenser as cd
 
@@ -14,8 +15,6 @@ class SentencePage(tk.Frame):
 
 		# circular imports
 		from Homepage import Homepage
-
-		print("sentence page")
 
 		# ===============
 		# canvas
@@ -29,18 +28,32 @@ class SentencePage(tk.Frame):
 		# frames
 		# ===============
 
-		dirframe = tk.Frame(canvas)
-		dirframe.grid(row=0, column=0, sticky='w')
+		toolbar = tk.Frame(canvas)
+		toolbar.grid(row=0, column=0, sticky='w')
 
-		coll_col = tk.Frame(canvas, width=20)
-		coll_col.grid(row=1, column=0, sticky='nw', pady=25)
+		photo_row = tk.Frame(canvas, width=20)
+		photo_row.grid(row=1, column=0, sticky='nw', pady=25)
 
-		ep_col = tk.Frame(canvas)
-		ep_col.grid(row=1, column=1, sticky='nw', pady=25)
+		nav_row = tk.Frame(canvas)
+		nav_row.grid(row=2, column=0, sticky='nw', pady=25)
 
-		options_col = tk.Frame(canvas)
-		options_col.grid(row=1, column=2, sticky='nw', pady=25)
+		# ===============
+		# toolbar
+		# ===============
 
-
-		homebtn = tk.Button(dirframe, text="Back to homepage", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: controller.show_frame(Homepage))
+		homebtn = tk.Button(toolbar, text="Back to homepage", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: controller.show_frame(Homepage))
 		homebtn.pack()
+
+		testbtn = tk.Button(toolbar, text="Test button", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: spf.test())
+		testbtn.pack()
+
+		# ===============
+		# photo row
+		# ===============
+
+
+
+		# ===============
+		# nav row
+		# ===============
+

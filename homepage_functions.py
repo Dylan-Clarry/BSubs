@@ -140,10 +140,6 @@ def set_episodes(frame, coll_name):
 
 		# add all episodes to frame
 		for i in range(len(episodes)):
-			radio_btn = tk.Radiobutton(frame, text=episodes[i].strip('.mp4'), variable=settings.sel_ep, value=episodes[i], command=lambda: episode_command(settings.sel_ep.get()))
+			radio_btn = tk.Radiobutton(frame, text=episodes[i].strip('.mp4'), variable=settings.sel_ep, value=episodes[i], command=lambda: gv.build_paths())
 			radio_btn.pack(anchor='w')
 		settings.sel_ep.set(0)
-
-def episode_command(thing):
-	print(thing)
-	gv.print_all_global()

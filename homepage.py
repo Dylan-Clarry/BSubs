@@ -98,11 +98,11 @@ class Homepage(tk.Frame):
 		options_btn_frame.pack()
 
 		# condense selected episode into audio button
-		condense_single_btn = tk.Button(options_btn_frame, text="Condense single episode", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: cd.produce_single_audio(gv.get_sel_coll(), gv.get_sel_ep()))
+		condense_single_btn = tk.Button(options_btn_frame, text="Condense single episode", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: cd.produce_single_audio())
 		condense_single_btn.grid(row=0, column=0, sticky='nw')
 
 		# condense all episodes into audio button
-		condense_all_btn = tk.Button(options_btn_frame, text="Condense all episodes", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: cd.produce_collection_audio(gv.get_sel_coll()))
+		condense_all_btn = tk.Button(options_btn_frame, text="Condense all episodes", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: cd.produce_collection_audio())
 		condense_all_btn.grid(row=1, column=0, sticky='nw')
 
 		# go to sentence miner for currently selected episode
