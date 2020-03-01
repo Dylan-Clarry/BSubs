@@ -3,7 +3,6 @@ from tkinter import filedialog, Text, Label
 from tkinter.messagebox import showinfo
 import os, settings, helper
 import globalvars as gv
-import homepage as hp
 import subprocess as sp
 import condenser as cd
 
@@ -107,10 +106,11 @@ def set_collections(frame, frame2):
 # add currently selected collections episodes to canvas
 def set_episodes(frame, coll_name):
 	
-	directory = gv.get_directory() + '/' + coll_name + '/media'
+	directory = gv.get_directory() + '/' + settings.sel_coll.get() + '/media'
 	
 	print('coll_name: ', coll_name)
 	print('directory: ', directory)
+	print('settings:', settings.sel_coll.get())
 	print('files: ', os.listdir(directory))
 
 	# get episodes from current collection

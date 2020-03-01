@@ -3,7 +3,7 @@ from tkinter import filedialog, Text, Label
 from tkinter.messagebox import showinfo
 import os, settings
 import globalvars as gv
-import homepage as hp
+from Homepage import Homepage
 
 # initialize global variables
 settings.init()
@@ -22,11 +22,12 @@ if __name__ == '__main__':
 	root.title("BSubs")
 	root.minsize(960, 640)
 
-	# global tkinter variables
-	settings.tkinit()
-
 	# set homepage
-	hp.homepage(root)
+	homepage = Homepage(root)
+	homepage.pack(side="top", fill="both", expand=True)
+
+	# global tkinter variables
+	#settings.tkinit()
 
 	# start tkinter mainloop
 	root.mainloop()

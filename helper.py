@@ -1,5 +1,9 @@
 import re
 
+# clears the current frame
+def clear_page(frame):
+	frame.destroy()
+
 # mergesort for chinese titles
 def mergesort(myList):
 
