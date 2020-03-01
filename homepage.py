@@ -11,11 +11,8 @@ from SentencePage import SentencePage
 # sets up homepage on root
 class Homepage(tk.Frame):
 
-	def __init__(self, *args, **kwargs):
-		tk.Frame.__init__(self, *args, **kwargs)
-
-		# initialize other pages
-		spg = SentencePage(self)
+	def __init__(self, parent, controller):
+		tk.Frame.__init__(self, parent)
 
 		# global tkinter variables
 		settings.tkinit()
@@ -109,7 +106,7 @@ class Homepage(tk.Frame):
 		condense_all_btn.grid(row=1, column=0, sticky='nw')
 
 		# go to sentence miner for currently selected episode
-		sentence_mine_btn = tk.Button(options_btn_frame, text="Sentence mine episode", padx=10, pady=5, fg="black", bg="#263D42", command=spg.show())
+		sentence_mine_btn = tk.Button(options_btn_frame, text="Sentence mine episode", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: controller.show_frame(SentencePage))
 		sentence_mine_btn.grid(row=2, column=0, sticky='nw')
 
 		# load inital directory

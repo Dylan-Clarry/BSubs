@@ -63,6 +63,9 @@ def produce_collection_audio(collection):
 
 # deletes all audio clips after audio condensing is complete
 def clear_temp_folder(dir, size):
+
+	# change to dynamically get size of folder
+
 	for i in range(0, size):
 		file = dir + '' + str(i) + '.mp3'
 		os.remove(file)

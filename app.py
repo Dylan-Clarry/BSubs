@@ -3,7 +3,7 @@ from tkinter import filedialog, Text, Label
 from tkinter.messagebox import showinfo
 import os, settings
 import globalvars as gv
-from Homepage import Homepage
+from Navigator import Navigator
 
 # initialize global variables
 settings.init()
@@ -19,17 +19,13 @@ if __name__ == '__main__':
 	
 	# tkinter root
 	root = tk.Tk()
-	root.title("BSubs")
-	root.minsize(960, 640)
 
-	# set homepage
-	homepage = Homepage(root)
-	homepage.pack(side="top", fill="both", expand=True)
-
-	# global tkinter variables
-	#settings.tkinit()
+	app = Navigator(root)
+	app.pack(side="top", fill="both", expand=True)
 
 	# start tkinter mainloop
+	root.title("BSubs")
+	root.minsize(960, 640)
 	root.mainloop()
 
 	# write current directory to save file

@@ -9,8 +9,13 @@ import condenser as cd
 
 class SentencePage(tk.Frame):
 
-	def __init__(self, *args, **kwargs):
-		tk.Frame.__init__(self, *args, **kwargs)
+	def __init__(self, parent, controller):
+		tk.Frame.__init__(self, parent)
+
+		# circular imports
+		from Homepage import Homepage
+
+		print("sentence page")
 
 		# ===============
 		# canvas
@@ -35,3 +40,7 @@ class SentencePage(tk.Frame):
 
 		options_col = tk.Frame(canvas)
 		options_col.grid(row=1, column=2, sticky='nw', pady=25)
+
+
+		homebtn = tk.Button(dirframe, text="Back to homepage", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: controller.show_frame(Homepage))
+		homebtn.pack()

@@ -1,0 +1,7 @@
+
+
+# condenser.py
+======================
+
+- if condensed file already exists ask if the user wants to overwrite first
+- always clear the temp folder before starting a new compression
