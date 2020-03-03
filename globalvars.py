@@ -77,10 +77,6 @@ def build_paths():
 	settings.subtitle_file = get_collection_dir() + '/subtitles/' + get_episode_suffix() + '.srt'
 	settings.audio_file = get_audio_dir() + get_sel_ep().strip('.mp4') + '.mp3'
 
-# return path variables using currently selected collection and episode
-def get_paths():
-	return settings.collection_dir, settings.audio_dir, settings.temp_dir, settings.condensed_dir, settings.episode_suffix, settings.episode_file, settings.subtitle_file, settings.audio_file
-
 # print all current global variables
 def print_all_global():
 	print('\nGlobal Variables')
