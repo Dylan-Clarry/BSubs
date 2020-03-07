@@ -6,10 +6,12 @@ import globalvars as gv
 import homepage_functions as hpf
 import subprocess as sp
 import condenser as cd
+from Episode import Episode
 
 def test():
-	gv.build_paths()
-	gv.print_all_global()
+	# gv.build_paths()
+	# gv.print_all_global()
+	gv.get_curr_ep().print_paths()
 
 
 def card_forward():
@@ -21,3 +23,6 @@ def card_backward():
 def play_sound(sub, file):
 	sub.print_sub()
 	sp.call(['ffplay', '-nodisp', '-autoexit', file, '-ss', sub.get_start(), '-t', sub.get_dur()])
+
+def generate_image(sub):
+	return

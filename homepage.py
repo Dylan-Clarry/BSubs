@@ -4,7 +4,6 @@ from tkinter.messagebox import showinfo
 import os, settings, helper
 import globalvars as gv
 import homepage_functions as hpf
-import subprocess as sp
 import condenser as cd
 from SentencePage import SentencePage
 
@@ -106,7 +105,7 @@ class Homepage(tk.Frame):
 		condense_all_btn.grid(row=1, column=0, sticky='nw')
 
 		# go to sentence miner for currently selected episode
-		sentence_mine_btn = tk.Button(options_btn_frame, text="Sentence mine episode", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: [f() for f in [gv.set_curr_subs(), controller.show_frame(SentencePage)]])
+		sentence_mine_btn = tk.Button(options_btn_frame, text="Sentence mine episode", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: [f() for f in [gv.set_curr_ep(), controller.show_frame(SentencePage)]])
 		sentence_mine_btn.grid(row=2, column=0, sticky='nw')
 
 		# load inital directory

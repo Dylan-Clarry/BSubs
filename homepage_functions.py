@@ -1,10 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog, Text, Label
-from tkinter.messagebox import showinfo
 import os, settings, helper
 import globalvars as gv
-import subprocess as sp
-import condenser as cd
 
 # loads previously saved directory
 def load_directory(frame, frame2):
@@ -130,6 +127,6 @@ def set_episodes(frame, coll_name):
 
 		# add all episodes to frame
 		for i in range(len(episodes)):
-			radio_btn = tk.Radiobutton(frame, text=episodes[i].strip('.mp4'), variable=settings.sel_ep, value=episodes[i], command=lambda: gv.build_paths())
+			radio_btn = tk.Radiobutton(frame, text=episodes[i].strip('.mp4'), variable=settings.sel_ep, value=episodes[i], command=lambda: gv.set_curr_ep())
 			radio_btn.pack(anchor='w')
 		settings.sel_ep.set(0)

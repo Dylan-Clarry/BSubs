@@ -1,4 +1,5 @@
 import settings, bsubs
+from Episode import Episode
 
 # getters and setters for global variables
 def set_directory(directory):
@@ -19,30 +20,14 @@ def get_collections():
 def get_episodes():
 	return settings.episodes
 
-# getters for global pathways
-def get_collection_dir():
-	return settings.collection_dir
 
-def get_audio_dir():
-	return settings.audio_dir
+# setting and getting the current episode object
+def set_curr_ep():
+	settings.curr_episode = Episode(get_directory(), get_sel_coll(), get_sel_ep())
 
-def get_temp_dir():
-	return settings.temp_dir
+def get_curr_ep():
+	return settings.curr_episode
 
-def get_condensed_dir():
-	return settings.condensed_dir
-
-def get_episode_suffix():
-	return settings.episode_suffix
-
-def get_episode_file():
-	return settings.episode_file
-
-def get_subtitle_file():
-	return settings.subtitle_file
-
-def get_audio_file():
-	return settings.audio_file
 
 # setter and getter for keeping track of the current sub
 def set_curr_subs():
@@ -51,6 +36,7 @@ def set_curr_subs():
 
 def get_curr_subs():
 	return settings.curr_subs
+
 
 # append to settings arrays
 def add_to_collection(entry):
@@ -73,17 +59,6 @@ def get_sel_coll():
 def get_sel_ep():
 	return settings.sel_ep.get()
 
-# set path variables using currently selected collection and episode
-def build_paths():
-	settings.collection_dir = get_directory() + '/' + get_sel_coll()
-	settings.audio_dir = get_collection_dir() + '/audio/'
-	settings.temp_dir = get_collection_dir() + '/temp/'
-	settings.condensed_dir = get_collection_dir() + '/condensed/'
-	settings.episode_suffix = get_sel_ep().strip('.mp4')
-	settings.episode_file = get_collection_dir() + '/media/' + get_sel_ep()
-	settings.subtitle_file = get_collection_dir() + '/subtitles/' + get_episode_suffix() + '.srt'
-	settings.audio_file = get_audio_dir() + get_sel_ep().strip('.mp4') + '.mp3'
-
 # print all current global variables
 def print_all_global():
 	print('\nGlobal Variables')
@@ -94,12 +69,5 @@ def print_all_global():
 	print('sel_coll: ', get_sel_coll())
 	print('sel_ep: ', get_sel_ep())
 	print()
-	print('collection_dir: ', get_collection_dir())
-	print('audio_dir: ', get_audio_dir())
-	print('temp_dir: ', get_temp_dir())
-	print('condensed_dir: ', get_condensed_dir())
-	print('episode_suffix: ', get_episode_suffix())
-	print('episode_file: ', get_episode_file())
-	print('subtitle_file: ', get_subtitle_file())
-	print('audio_file: ', get_audio_file())
+	get_curr_ep().print_paths()
 	print()

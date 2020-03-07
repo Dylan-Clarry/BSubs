@@ -13,15 +13,16 @@ def produce_single_audio():
 
 	print('single\n======')
 
-	collection_dir = gv.get_collection_dir()
-	audio_dir = gv.get_audio_dir()
-	temp_dir = gv.get_temp_dir()
-	condensed_dir = gv.get_condensed_dir()
+	episode = gv.get_curr_ep()
+	collection_dir = episode.get_collection_dir()
+	audio_dir = episode.get_audio_dir()
+	temp_dir = episode.get_temp_dir()
+	condensed_dir = episode.get_condensed_dir()
 
-	subtitle = gv.get_episode_suffix()
-	episode_file = gv.get_episode_file()
-	subtitle_file = gv.get_subtitle_file()
-	audio_file = gv.get_audio_file()
+	subtitle = episode.get_episode_suffix()
+	episode_file = episode.get_episode_file()
+	subtitle_file = episode.get_subtitle_file()
+	audio_file = episode.get_audio_file()
 
 	gv.print_all_global()
 

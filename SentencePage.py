@@ -16,8 +16,6 @@ class SentencePage(tk.Frame):
 		# circular imports
 		from Homepage import Homepage
 
-		print("yaa");
-
 		# ===============
 		# canvas
 		# ===============
@@ -67,4 +65,4 @@ class SentencePage(tk.Frame):
 
 
 
-		
+

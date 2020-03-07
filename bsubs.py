@@ -11,32 +11,6 @@ from chinese import ChineseAnalyzer
 from Sub import Sub
 from datetime import datetime
 
-# from mutagen.mp3 import MP3
-	# f = MP3(input_video)
-	# print(f.info.bitrate / 1000)
-
-def main():
-
-	input_srt = './input/test_01.srt'
-	input_video = './input/test_01.mp4'
-	input_mp3 = './input/aded.mp3'
-
-	# directory entries
-	entries = os.listdir("./input/")
-
-	# open srt file
-	file = open(input_srt, 'r')
-	lines = file.readlines()
-	file.close()
-
-	# parse srt file into subtitle object list
-	subs = parse_srt(lines)
-	
-	# testing for sound bytes
-	for sub in subs:
-		sub.print_sub()
-		subprocess.call(['ffplay', '-nodisp', '-autoexit', input_mp3, '-ss', sub.get_start(), '-t', sub.get_dur()])
-
 # parse srt file to sub objects
 def parse_srt(subtitle_file):
 
