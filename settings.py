@@ -26,6 +26,9 @@ def init():
 	subtitle_file = ""
 	audio_file = ""
 
+	global curr_subs
+	curr_subs = []
+
 # initialize global tkinter variables
 def tkinit():
 	global sel_coll

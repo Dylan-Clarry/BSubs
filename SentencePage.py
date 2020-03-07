@@ -16,6 +16,8 @@ class SentencePage(tk.Frame):
 		# circular imports
 		from Homepage import Homepage
 
+		print("yaa");
+
 		# ===============
 		# canvas
 		# ===============
@@ -56,4 +58,13 @@ class SentencePage(tk.Frame):
 		# ===============
 		# nav row
 		# ===============
+		back_btn = tk.Button(nav_row, text="<<")
+		play_sound_btn = tk.Button(nav_row, text="Play", command=lambda: spf.play_sound(gv.get_curr_subs()[5], gv.get_audio_file()))
+		fwd_btn = tk.Button(nav_row, text=">>")
+		back_btn.grid(row=0, column=0)
+		play_sound_btn.grid(row=0, column=1)
+		fwd_btn.grid(row=0, column=2)
 
+
+
+		

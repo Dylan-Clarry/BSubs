@@ -1,4 +1,4 @@
-import settings
+import settings, bsubs
 
 # getters and setters for global variables
 def set_directory(directory):
@@ -44,6 +44,13 @@ def get_subtitle_file():
 def get_audio_file():
 	return settings.audio_file
 
+# setter and getter for keeping track of the current sub
+def set_curr_subs():
+	settings.curr_subs = bsubs.parse_srt(get_subtitle_file())
+	settings.curr_subs[0].print_sub()
+
+def get_curr_subs():
+	return settings.curr_subs
 
 # append to settings arrays
 def add_to_collection(entry):

@@ -54,7 +54,6 @@ def new_collection(root, frame, frame2):
 
 def new_collection_aux(frame, frame2, prompt, name_entry):
 	name = name_entry.get()
-	print(name)
 	gv.add_to_collection(name)
 
 	set_collections(frame, frame2)
@@ -83,9 +82,6 @@ def new_collection_aux(frame, frame2, prompt, name_entry):
 def set_collections(frame, frame2):
 
 	collections = gv.get_collections()
-	
-	print('asdf: ', collections)
-	print('qwer: ', gv.get_sel_coll())
 
 	# clear current frame
 	for widget in frame.winfo_children():
@@ -107,11 +103,6 @@ def set_collections(frame, frame2):
 def set_episodes(frame, coll_name):
 	
 	directory = gv.get_directory() + '/' + settings.sel_coll.get() + '/media'
-	
-	print('coll_name: ', coll_name)
-	print('directory: ', directory)
-	print('settings:', settings.sel_coll.get())
-	print('files: ', os.listdir(directory))
 
 	# get episodes from current collection
 	episodes = os.listdir(directory)
@@ -126,7 +117,6 @@ def set_episodes(frame, coll_name):
 		i += 1
 	helper.mergesort(episodes)
 	gv.set_episodes(episodes)
-	print(episodes)
 
 	# clear current frame
 	for widget in frame.winfo_children():
