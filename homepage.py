@@ -65,7 +65,7 @@ class Homepage(tk.Frame):
 		coll_lbl.pack()
 		
 		# new collection button
-		new_coll = tk.Button(coll_col, text='New Collection', padx=10, pady=5, fg="black", bg="#263D42", command=lambda: hpf.new_collection(root, collframe, epframe))
+		new_coll = tk.Button(coll_col, text='New Collection', padx=10, pady=5, fg="black", bg="#263D42", command=lambda: hpf.new_collection(self, collframe, epframe))
 		new_coll.pack()
 		
 		# frame holding collections
@@ -105,7 +105,7 @@ class Homepage(tk.Frame):
 		condense_all_btn.grid(row=1, column=0, sticky='nw')
 
 		# go to sentence miner for currently selected episode
-		sentence_mine_btn = tk.Button(options_btn_frame, text="Sentence mine episode", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: [f() for f in [gv.set_curr_ep(), controller.show_frame(SentencePage)]])
+		sentence_mine_btn = tk.Button(options_btn_frame, text="Sentence mine episode", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: [f() for f in [gv.set_curr_ep(), gv.get_curr_ep().set_subs(), controller.show_frame(SentencePage)]])
 		sentence_mine_btn.grid(row=2, column=0, sticky='nw')
 
 		# load inital directory

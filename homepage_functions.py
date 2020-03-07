@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog, Text, Label
 import os, settings, helper
+import subprocess as sp
 import globalvars as gv
 
 # loads previously saved directory
@@ -22,7 +23,7 @@ def load_directory(frame, frame2):
 def set_directory(dir_lbl, frame, frame2):
 	
 	directory = filedialog.askdirectory()
-	gv.set_directory()
+	gv.set_directory(directory)
 
 	dir_lbl.config(text=directory)
 

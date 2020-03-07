@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog, Text, Label
 from tkinter.messagebox import showinfo
+from PIL import ImageTK, Image
 import os, settings, helper
 import globalvars as gv
 import homepage_functions as hpf
@@ -34,8 +35,11 @@ class SentencePage(tk.Frame):
 		photo_row = tk.Frame(canvas, width=20)
 		photo_row.grid(row=1, column=0, sticky='nw', pady=25)
 
+		sentence_row = tk.Frame(canvas)
+		sentence_row.grid(row=2, column=0, columnspan=3, sticky='nw', pady=25)		
+
 		nav_row = tk.Frame(canvas)
-		nav_row.grid(row=2, column=0, sticky='nw', pady=25)
+		nav_row.grid(row=3, column=0, sticky='nw', pady=25)
 
 		# ===============
 		# toolbar
@@ -51,16 +55,25 @@ class SentencePage(tk.Frame):
 		# photo row
 		# ===============
 
+		photo = tk.Label(photo_row)
+		photo.pack()
 
+		# ===============
+		# sentence row
+		# ===============
+		sentence_lbl = tk.Label(sentence_row, text=">> to start")
+		sentence_lbl.pack()
 
 		# ===============
 		# nav row
 		# ===============
-		back_btn = tk.Button(nav_row, text="<<")
-		play_sound_btn = tk.Button(nav_row, text="Play", command=lambda: spf.play_sound(gv.get_curr_subs()[5], gv.get_audio_file()))
-		fwd_btn = tk.Button(nav_row, text=">>")
+		back_btn = tk.Button(nav_row, text="<<", command=lambda: spf.card_back(sentence_lbl, photo))
 		back_btn.grid(row=0, column=0)
+
+		play_sound_btn = tk.Button(nav_row, text="Play", command=lambda: spf.play_sound())
 		play_sound_btn.grid(row=0, column=1)
+
+		fwd_btn = tk.Button(nav_row, text=">>", command=lambda: spf.card_forward(sentence_lbl, photo))
 		fwd_btn.grid(row=0, column=2)
 
 

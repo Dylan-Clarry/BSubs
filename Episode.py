@@ -1,3 +1,6 @@
+import subprocess as sp
+from bsubs import parse_srt
+
 class Episode:
 
 	# contructor
@@ -10,13 +13,9 @@ class Episode:
 		self.extension = '.mp4'
 
 	# populates the episodes subs with sub objects
-	def set_subs(self, subarr):
-		self.subs = subarr
-
-	# populates the episodes subs with sub objects
-	def set_subs(self, subarr):
-		self.subs = subarr
-		self.size = len(subarr)
+	def set_subs(self):
+		self.subs = parse_srt(self.get_subtitle_file())
+		self.size = len(self.subs)
 
 	# returns a sub at a given index
 	def get_sub_at_index(self, index):
@@ -28,15 +27,34 @@ class Episode:
 
 	# sets the current sub to the next sub
 	def next_sub(self):
-		if self.curr_sub != self.size:
+		if self.curr_sub < self.size - 1:
 			self.curr_sub += 1
 
 	# sets the current sub to the previous sub
-	def next_sub(self):
+	def prev_sub(self):
 		if self.curr_sub != 0:
 			self.curr_sub -= 1
 
+	# returns the current sentence
+	def get_curr_sentence(self):
+		return self.get_curr_sub().get_content()
 
+	# prints the current sub info
+	def print_sub(self):
+		curr = self.get_curr_sub()
+		curr.print_sub()
+
+	# plays the sound clip for the current sub
+	def play_sub(self):
+		curr = self.get_curr_sub()
+		sp.call(['ffplay', '-nodisp', '-autoexit', self.get_audio_file(), '-ss', curr.get_start(), '-t', curr.get_dur()])
+
+	# creates an image for the current sub in the temp folder
+	def create_image(self):
+		curr = self.get_curr_sub()
+		temp_image = self.get_temp_dir() + 'temp.jpg'
+		sp.call(['ffmpeg', '-ss', curr.get_start(), '-i', self.get_episode_file(), '-vframes', '1', '-q:v', '2', temp_image])
+		return temp_image
 
 
 	# getters for episode pathways

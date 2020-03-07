@@ -17,15 +17,6 @@ class Sub:
 		self.content = content
 		self.words = words
 
-	# print out all subtitle details
-	def print_sub(self):
-		print('index: ', self.index)
-		print('start: ', self.start)
-		print('end: ', self.end, type(self.end))
-		print('dur: ', self.dur, type(self.dur))
-		print('content: ', self.content)
-		print('words: ', self.words)
-
 	# get index of sub object
 	def get_index(self):
 		return self.index
@@ -49,3 +40,12 @@ class Sub:
 	# get words of sub object
 	def get_words(self):
 		return self.words
+	
+	# print out all subtitle details
+	def print_sub(self):
+		print('index: ', self.index)
+		print('start: ', self.start)
+		print('end: ', self.end, type(self.end))
+		print('dur: ', self.dur, type(self.dur))
+		print('content: ', self.content)
+		print('words: ', self.words)
