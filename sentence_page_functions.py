@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog, Text, Label
 from tkinter.messagebox import showinfo
-from PIL import ImageTK, Image
+from PIL import Image, ImageTk
 import os, settings, helper
 import globalvars as gv
 import homepage_functions as hpf
@@ -16,7 +16,7 @@ def test():
 	episode.subs[5].print_sub()
 
 
-def card_forward(lbl, photo):
+def card_forward(lbl, photo, row):
 
 	# set the next sub from current
 	episode = gv.get_curr_ep()
@@ -26,7 +26,17 @@ def card_forward(lbl, photo):
 	# set sentence labels text to be next sentence
 	lbl.config(text=episode.get_curr_sentence())
 
-	photo.config(image=generate_image())
+	# change the image
+	img = generate_image()
+
+	# print("IMAGEIMAGEIMAGE")
+	# print("===============")
+	# print(img)
+	# print("===============")
+
+	photo.grid_forget()
+	photo = Label(row, image=img)
+	photo.grid(row=0, column=0)
 
 def card_back(lbl, photo):
 
@@ -38,7 +48,11 @@ def card_back(lbl, photo):
 	# set sentence labels text to be previous sentence
 	lbl.config(text=episode.get_curr_sentence())
 
-	photo.config(image=generate_image())
+	#change the image
+	img = generate_image()
+	print(img)
+	photo.config(image=img)
+	photo.image = img
 
 def play_sound():
 	episode = gv.get_curr_ep()
@@ -47,6 +61,9 @@ def play_sound():
 
 def generate_image():
 	episode = gv.get_curr_ep()
-	image = ImageTK.PhotoImage(Image.open(episode.create_image()))
+	image = ImageTk.PhotoImage(Image.open(episode.create_image()))
 
 	return image
+
+
+

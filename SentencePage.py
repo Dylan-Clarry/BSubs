@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog, Text, Label
 from tkinter.messagebox import showinfo
-from PIL import ImageTK, Image
 import os, settings, helper
 import globalvars as gv
 import homepage_functions as hpf
@@ -56,7 +55,7 @@ class SentencePage(tk.Frame):
 		# ===============
 
 		photo = tk.Label(photo_row)
-		photo.pack()
+		photo.grid(row=0, column=0)
 
 		# ===============
 		# sentence row
@@ -67,13 +66,13 @@ class SentencePage(tk.Frame):
 		# ===============
 		# nav row
 		# ===============
-		back_btn = tk.Button(nav_row, text="<<", command=lambda: spf.card_back(sentence_lbl, photo))
+		back_btn = tk.Button(nav_row, text="<<", command=lambda: spf.card_back(sentence_lbl, photo, photo_row))
 		back_btn.grid(row=0, column=0)
 
 		play_sound_btn = tk.Button(nav_row, text="Play", command=lambda: spf.play_sound())
 		play_sound_btn.grid(row=0, column=1)
 
-		fwd_btn = tk.Button(nav_row, text=">>", command=lambda: spf.card_forward(sentence_lbl, photo))
+		fwd_btn = tk.Button(nav_row, text=">>", command=lambda: spf.card_forward(sentence_lbl, photo, photo_row))
 		fwd_btn.grid(row=0, column=2)
 
 

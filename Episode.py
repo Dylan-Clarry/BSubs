@@ -53,7 +53,8 @@ class Episode:
 	def create_image(self):
 		curr = self.get_curr_sub()
 		temp_image = self.get_temp_dir() + 'temp.jpg'
-		sp.call(['ffmpeg', '-ss', curr.get_start(), '-i', self.get_episode_file(), '-vframes', '1', '-q:v', '2', temp_image])
+		sp.call(['rm', temp_image])
+		sp.call(['ffmpeg', '-ss', curr.get_end(), '-i', self.get_episode_file(), '-vframes', '1', '-q:v', '2', temp_image])
 		return temp_image
 
 
