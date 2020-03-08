@@ -26,19 +26,48 @@ def card_forward(lbl, photo, row):
 	# set sentence labels text to be next sentence
 	lbl.config(text=episode.get_curr_sentence())
 
-	# change the image
+
+
+
+
+
+
+
+	#change the image
 	img = generate_image()
+	print(img)
+	photo.config(image=img)
+	photo.image = img
+
+	# change the image
+	# img = generate_image()
+	# photo.grid_forget()
+
+	# photo.configure(image=img)
+	# photo.pack()
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+	# photo.create_image((50, 50), image=img)
 
 	# print("IMAGEIMAGEIMAGE")
 	# print("===============")
 	# print(img)
 	# print("===============")
 
-	photo.grid_forget()
-	photo = Label(row, image=img)
-	photo.grid(row=0, column=0)
 
-def card_back(lbl, photo):
+def card_back(lbl, photo, row):
 
 	# set the previous sub from current
 	episode = gv.get_curr_ep()
@@ -59,9 +88,17 @@ def play_sound():
 	episode.print_sub()
 	episode.play_sub()
 
+def generate_imager():
+	episode = gv.get_curr_ep()
+	image = tk.PhotoImage(file=episode.create_image())
+	print(episode.create_image())
+
+	return image
+
 def generate_image():
 	episode = gv.get_curr_ep()
 	image = ImageTk.PhotoImage(Image.open(episode.create_image()))
+	print(episode.create_image())
 
 	return image
 

@@ -55,7 +55,7 @@ class SentencePage(tk.Frame):
 		# ===============
 
 		photo = tk.Label(photo_row)
-		photo.grid(row=0, column=0)
+		photo.pack()
 
 		# ===============
 		# sentence row
