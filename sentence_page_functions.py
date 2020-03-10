@@ -7,13 +7,12 @@ import globalvars as gv
 import homepage_functions as hpf
 import subprocess as sp
 import condenser as cd
+import exporter as xp
 from Episode import Episode
 
 def test():
 
-	episode = gv.get_curr_ep()
-	episode.print_paths()
-	episode.subs[5].print_sub()
+	xp.prep_tsv()
 
 
 def card_forward(lbl, photo, row):
@@ -27,44 +26,11 @@ def card_forward(lbl, photo, row):
 	lbl.config(text=episode.get_curr_sentence())
 
 
-
-
-
-
-
-
 	#change the image
 	img = generate_image()
 	print(img)
 	photo.config(image=img)
 	photo.image = img
-
-	# change the image
-	# img = generate_image()
-	# photo.grid_forget()
-
-	# photo.configure(image=img)
-	# photo.pack()
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-	# photo.create_image((50, 50), image=img)
-
-	# print("IMAGEIMAGEIMAGE")
-	# print("===============")
-	# print(img)
-	# print("===============")
 
 
 def card_back(lbl, photo, row):

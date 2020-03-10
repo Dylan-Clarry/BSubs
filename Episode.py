@@ -18,7 +18,7 @@ class Episode:
 		self.size = len(self.subs)
 
 	# returns a sub at a given index
-	def get_sub_at_index(self, index):
+	def get_index(self, index):
 		return self.subs[index]
 
 	# gets the current sub
@@ -70,6 +70,9 @@ class Episode:
 
 	def get_condensed_dir(self):
 		return self.collection + '/condensed/'
+
+	def get_deck_dir(self):
+		return self.collection + '/deck/'
 
 	def get_episode_suffix(self):
 		return self.episode.strip(self.extension)
