@@ -32,4 +32,4 @@ if __name__ == '__main__':
 	directory = gv.get_directory()
 	with open('save.txt', 'w') as f:
 		f.write(directory)
-#皕
+#皕jhklsdlkfjdsf
