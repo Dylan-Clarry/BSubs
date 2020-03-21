@@ -2,7 +2,9 @@
 
 # todo
 ======================
-- fix deck exporter naming problems
+- create add to exports button
+- create export deck
+- apply sentence miner when loading episodes
 
 
 # condenser.py

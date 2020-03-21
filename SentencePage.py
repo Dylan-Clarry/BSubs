@@ -22,7 +22,7 @@ class SentencePage(tk.Frame):
 
 		# tkinter canvas
 		canvas = tk.Canvas(self, height=640, width=960)
-		canvas.grid(row=1, column=0, columnspan=2, sticky='w')
+		canvas.grid(row=1, column=0, columnspan=2, sticky='we')
 
 		# ===============
 		# frames
@@ -32,13 +32,13 @@ class SentencePage(tk.Frame):
 		toolbar.grid(row=0, column=0, sticky='w')
 
 		photo_row = tk.Frame(canvas, width=20)
-		photo_row.grid(row=1, column=0, sticky='nw', pady=25)
+		photo_row.grid(row=1, column=0, sticky='we', pady=25)
 
 		sentence_row = tk.Frame(canvas)
-		sentence_row.grid(row=2, column=0, columnspan=3, sticky='nw', pady=25)		
+		sentence_row.grid(row=2, column=0, columnspan=3, sticky='we', pady=25)		
 
 		nav_row = tk.Frame(canvas)
-		nav_row.grid(row=3, column=0, sticky='nw', pady=25)
+		nav_row.grid(row=3, column=0, sticky='we', pady=25)
 
 		# ===============
 		# toolbar
@@ -72,9 +72,13 @@ class SentencePage(tk.Frame):
 		play_sound_btn = tk.Button(nav_row, text="Play", command=lambda: spf.play_sound())
 		play_sound_btn.grid(row=0, column=1)
 
+		save_card_btn = tk.Button(nav_row, text="Save Card", command=lambda: spf.save_sub())
+		save_card_btn.grid(row=0, column=2)
+
 		fwd_btn = tk.Button(nav_row, text=">>", command=lambda: spf.card_forward(sentence_lbl, photo, photo_row))
-		fwd_btn.grid(row=0, column=2)
+		fwd_btn.grid(row=0, column=3)
 
-
+# spf.card_forward(sentence_lbl, photo, photo_row)
+# [f() for f in [spf.card_forward(sentence_lbl, photo, photo_row), spf.play_sound()]]
 
 

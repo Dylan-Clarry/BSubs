@@ -5,12 +5,15 @@ def init():
 	global directory
 	global collections
 	global episodes
+	global exports
+	global curr_episode
+	global wordbank
 	directory = "Not Set"
 	collections = []
 	episodes = []
-
-	global curr_episode
+	exports = []
 	curr_episode = ""
+	wordbank = set()
 
 # initialize global tkinter variables
 def tkinit():

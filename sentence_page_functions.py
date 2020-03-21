@@ -9,6 +9,7 @@ import subprocess as sp
 import condenser as cd
 import exporter as xp
 from Episode import Episode
+from copy import deepcopy
 
 def test():
 
@@ -31,6 +32,8 @@ def card_forward(lbl, photo, row):
 	print(img)
 	photo.config(image=img)
 	photo.image = img
+
+	print("image loaded")
 
 
 def card_back(lbl, photo, row):
@@ -67,6 +70,21 @@ def generate_image():
 	print(episode.create_image())
 
 	return image
+
+def save_sub():
+	episode = deepcopy(gv.get_curr_ep())
+	episode.print_sub()
+
+	gv.add_to_exports(episode)
+	gv.print_exports()
+
+
+
+
+
+
+
+
 
 
 

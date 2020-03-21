@@ -45,6 +45,19 @@ def add_to_collection(entry):
 def add_to_episodes(entry):
 	settings.episodes.append(entry)
 
+def add_to_exports(entry):
+	settings.exports.append(entry)
+
+
+def print_exports():
+	exports = settings.exports
+	for export in exports:
+		print(export.print_sub())
+
+
+# wordbank functions
+
+
 
 # tkinter global variables
 def set_sel_coll(name):
