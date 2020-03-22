@@ -20,6 +20,12 @@ def get_collections():
 def get_episodes():
 	return settings.episodes
 
+def get_exports():
+	return settings.exports
+
+def clear_exports():
+	settings.exports = []
+
 
 # setting and getting the current episode object
 def set_curr_ep():
@@ -48,8 +54,10 @@ def add_to_episodes(entry):
 def add_to_exports(entry):
 	settings.exports.append(entry)
 
-
 def print_exports():
+
+	print('\n======================\nExports\n======================')
+
 	exports = settings.exports
 	for export in exports:
 		print(export.print_sub())

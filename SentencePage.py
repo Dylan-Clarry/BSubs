@@ -5,6 +5,7 @@ import os, settings, helper
 import globalvars as gv
 import homepage_functions as hpf
 import sentence_page_functions as spf
+import exporter as xp
 import subprocess as sp
 import condenser as cd
 
@@ -32,10 +33,10 @@ class SentencePage(tk.Frame):
 		toolbar.grid(row=0, column=0, sticky='w')
 
 		photo_row = tk.Frame(canvas, width=20)
-		photo_row.grid(row=1, column=0, sticky='we', pady=25)
+		photo_row.grid(row=1, column=0, columnspan=2, sticky='we', pady=25)
 
 		sentence_row = tk.Frame(canvas)
-		sentence_row.grid(row=2, column=0, columnspan=3, sticky='we', pady=25)		
+		sentence_row.grid(row=2, column=0, columnspan=2, sticky='we', pady=25)
 
 		nav_row = tk.Frame(canvas)
 		nav_row.grid(row=3, column=0, sticky='we', pady=25)
@@ -47,8 +48,8 @@ class SentencePage(tk.Frame):
 		homebtn = tk.Button(toolbar, text="Back to homepage", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: controller.show_frame(Homepage))
 		homebtn.pack()
 
-		testbtn = tk.Button(toolbar, text="Test button", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: spf.test())
-		testbtn.pack()
+		testbtn = tk.Button(toolbar, text="Export to Deck", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: xp.export_to_deck())
+		testbtn.pack(anchor='w')
 
 		# ===============
 		# photo row

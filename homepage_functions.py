@@ -65,6 +65,8 @@ def new_collection_aux(frame, frame2, prompt, name_entry):
 	condensed = gv.get_directory() + name + '/condensed'
 	temp = gv.get_directory() + name + '/temp'
 	audio = gv.get_directory() + name + '/audio'
+	deck = gv.get_directory() + name + '/deck'
+	deck_media = deck + '/media'
 
 	print(folder)
 	print(media)
@@ -72,9 +74,11 @@ def new_collection_aux(frame, frame2, prompt, name_entry):
 	print(condensed)
 	print(temp)
 	print(audio)
+	print(deck)
+	print(deck_media)
 
 	sp.call(['mkdir', folder])
-	sp.call(['mkdir', media, subtitles, condensed, temp, audio])
+	sp.call(['mkdir', media, subtitles, condensed, temp, audio, deck, deck_media])
 
 # add collections to canvas
 def set_collections(frame, frame2):

@@ -11,10 +11,6 @@ import exporter as xp
 from Episode import Episode
 from copy import deepcopy
 
-def test():
-
-	xp.prep_tsv()
-
 
 def card_forward(lbl, photo, row):
 
@@ -72,10 +68,10 @@ def generate_image():
 	return image
 
 def save_sub():
-	episode = deepcopy(gv.get_curr_ep())
-	episode.print_sub()
+	sub = gv.get_curr_ep().get_curr_sub()
+	sub.print_sub()
 
-	gv.add_to_exports(episode)
+	gv.add_to_exports(sub)
 	gv.print_exports()
 
 
