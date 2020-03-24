@@ -1,5 +1,6 @@
 import settings, bsubs
 from Episode import Episode
+import sentence_miner as sm
 
 # getters and setters for global variables
 def set_directory(directory):
@@ -65,6 +66,19 @@ def print_exports():
 
 # wordbank functions
 
+# write wordbank to string to store in file
+def get_wordbank_str():
+	return sm.wordbank_to_str(settings.wordbank)
+
+# sets the wordbank from a string
+def set_wordbank_str(string):
+	settings.wordbank = sm.str_to_wordbank(string)
+
+# adds all words to the wordbank
+def append_to_wordbank(words):
+	for word in words:
+		if word not in settings.wordbank:
+			settings.wordbank.add(word)
 
 
 # tkinter global variables

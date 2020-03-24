@@ -56,10 +56,10 @@ def how_many_targets(wordbank, words):
 	return count
 
 # adds all words to the wordbank
-def add_words_to_wordbank(wordbank, words):
+def append_to_wordbank(wordbank, words):
 	for word in words:
 		if word not in wordbank:
-			worbank.add(word)
+			wordbank.add(word)
 
 # for testing sentence miner functions
 if __name__ == '__main__':
@@ -70,6 +70,10 @@ if __name__ == '__main__':
 	print('testing\n=======')
 
 	wordbank = list_to_wordbank(words)
+	print('wordbank:',  wordbank)
+	print('testlist:',  testlist)
+
+	append_to_wordbank(wordbank, ['你好', '我', '准备'])
 	print('wordbank:',  wordbank)
 	print('testlist:',  testlist)
 

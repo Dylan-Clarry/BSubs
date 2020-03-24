@@ -11,7 +11,6 @@ import exporter as xp
 from Episode import Episode
 from copy import deepcopy
 
-
 def card_forward(lbl, photo, row):
 
 	# set the next sub from current
@@ -74,8 +73,9 @@ def save_sub():
 	gv.add_to_exports(sub)
 	gv.print_exports()
 
-
-
+def zero_t():
+	words = gv.get_curr_ep().get_curr_sub().get_words()
+	print('words:', words)
 
 
 

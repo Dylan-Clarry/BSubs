@@ -7,7 +7,6 @@ import globalvars as gv
 # loads previously saved directory
 def load_directory(frame, frame2):
 
-	settings.tkinit()
 	directory = gv.get_directory()
 	collections = gv.get_collections()
 
