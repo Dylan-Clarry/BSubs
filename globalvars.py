@@ -80,6 +80,11 @@ def append_to_wordbank(words):
 		if word not in settings.wordbank:
 			settings.wordbank.add(word)
 
+def print_wordbank():
+	print("\n======================\nWordbank\n======================")
+	for word in settings.wordbank:
+		print(word)
+	print('total words:', len(settings.wordbank))
 
 # tkinter global variables
 def set_sel_coll(name):
