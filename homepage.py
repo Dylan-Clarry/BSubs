@@ -96,17 +96,21 @@ class Homepage(tk.Frame):
 		options_btn_frame = tk.Frame(options_col)
 		options_btn_frame.pack()
 
+		# create the necessary audio files for sentence mining
+		initialize_btn = tk.Button(options_btn_frame, text="Initialize Collection", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: cd.initialize_audio())
+		initialize_btn.grid(row=0, column=0, sticky='nw')
+
 		# condense selected episode into audio button
 		condense_single_btn = tk.Button(options_btn_frame, text="Condense single episode", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: cd.produce_single_audio())
-		condense_single_btn.grid(row=0, column=0, sticky='nw')
+		condense_single_btn.grid(row=1, column=0, sticky='nw')
 
 		# condense all episodes into audio button
 		condense_all_btn = tk.Button(options_btn_frame, text="Condense all episodes", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: cd.produce_collection_audio())
-		condense_all_btn.grid(row=1, column=0, sticky='nw')
+		condense_all_btn.grid(row=2, column=0, sticky='nw')
 
 		# go to sentence miner for currently selected episode
 		sentence_mine_btn = tk.Button(options_btn_frame, text="Sentence mine episode", padx=10, pady=5, fg="black", bg="#263D42", command=lambda: [f() for f in [gv.set_curr_ep(), gv.get_curr_ep().set_subs_one_t(), controller.show_frame(SentencePage)]])
-		sentence_mine_btn.grid(row=2, column=0, sticky='nw')
+		sentence_mine_btn.grid(row=3, column=0, sticky='nw')
 
 		# load inital directory
 		hpf.load_directory(collframe, epframe)

@@ -96,6 +96,7 @@ def set_sel_coll(name):
 
 def set_sel_ep(name):
 	settings.sel_ep.set(name)
+	print('name:', name, settings.sel_ep.get())
 
 def get_sel_coll():
 	return settings.sel_coll.get()

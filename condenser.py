@@ -58,12 +58,34 @@ def produce_collection_audio():
 
 	for episode in episodes:
 		gv.set_sel_ep(episode)
-		gv.build_paths()
+		gv.set_curr_ep()
 		produce_single_audio()
 
 	# set back to previously selected episode radio button
 	gv.set_sel_ep(temp_episode)
 
+def initialize_audio():
+
+	print('episodes\n======')
+
+	# get currently selected
+	temp_episode = gv.get_sel_ep()
+	episodes = gv.get_episodes()
+	print(episodes)
+
+	for episode in episodes:
+		print('episode:', gv.get_curr_ep().get_episode_file(), episode)
+		gv.set_sel_ep(episode)
+		gv.set_curr_ep()
+		epi = gv.get_curr_ep()
+		print('episode:', gv.get_curr_ep().get_episode_file(), epi.get_episode_file())
+		print()
+		episode_file = epi.get_episode_file()
+		audio_file = epi.get_audio_file()
+		video_to_audio(episode_file, audio_file)
+
+	# set back to previously selected episode radio button
+	gv.set_sel_ep(temp_episode)
 
 # deletes all audio clips after audio condensing is complete
 def clear_temp_folder(dir, size):
