@@ -81,8 +81,3 @@ class SentencePage(tk.Frame):
 
 		fwd_btn = tk.Button(nav_row, text=">>", command=lambda: spf.card_forward(sentence_lbl, photo, photo_row))
 		fwd_btn.grid(row=0, column=4)
-
-# spf.card_forward(sentence_lbl, photo, photo_row)
-# [f() for f in [spf.card_forward(sentence_lbl, photo, photo_row), spf.play_sound()]]
-
-

@@ -1,5 +1,5 @@
 import subprocess as sp
-from bsubs import parse_srt
+from bsubs import parse_srt, parse_one_t
 
 class Episode:
 
@@ -15,6 +15,11 @@ class Episode:
 	# populates the episodes subs with sub objects
 	def set_subs(self):
 		self.subs = parse_srt(self.get_subtitle_file())
+		self.size = len(self.subs)
+
+	# populates the episodes subs with 1T sub objects
+	def set_subs_one_t(self):
+		self.subs = parse_one_t(self.get_subtitle_file())
 		self.size = len(self.subs)
 
 	# returns a sub at a given index

@@ -15,12 +15,13 @@ def card_forward(lbl, photo, row):
 
 	# set the next sub from current
 	episode = gv.get_curr_ep()
-	episode.next_sub()
+
+	if lbl['text'] != ">> to start":
+		episode.next_sub()
 	episode.print_sub()
 
 	# set sentence labels text to be next sentence
 	lbl.config(text=episode.get_curr_sentence())
-
 
 	#change the image
 	img = generate_image()
@@ -52,18 +53,10 @@ def play_sound():
 	episode.print_sub()
 	episode.play_sub()
 
-def generate_imager():
-	episode = gv.get_curr_ep()
-	image = tk.PhotoImage(file=episode.create_image())
-	print(episode.create_image())
-
-	return image
-
 def generate_image():
 	episode = gv.get_curr_ep()
 	image = ImageTk.PhotoImage(Image.open(episode.create_image()))
 	print(episode.create_image())
-
 	return image
 
 def save_sub():

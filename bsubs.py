@@ -10,6 +10,8 @@ from playsound import playsound
 from chinese import ChineseAnalyzer
 from Sub import Sub
 from datetime import datetime
+import sentence_miner as sm
+import globalvars as gv
 
 # parse srt file to sub objects
 def parse_srt(subtitle_file):
@@ -40,6 +42,20 @@ def parse_srt(subtitle_file):
 		c += 1
 		subs.append(Sub(index, start, end, dur, content, tokens))
 		print()
+	return subs
+
+# find all 1T subs in episode
+def parse_one_t(subtitle_file):
+
+	temp_subs = parse_srt(subtitle_file)
+	subs = []
+	wordbank = gv.get_wordbank()
+	for sub in temp_subs:
+		words = sub.get_words()
+
+		# add sub to sub list if it has one target
+		if sm.is_one_target(wordbank, words):
+			subs.append(sub)
 	return subs
 
 # remove none Chinese words from word list
