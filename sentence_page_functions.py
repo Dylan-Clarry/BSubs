@@ -66,6 +66,10 @@ def save_sub():
 	gv.add_to_exports(sub)
 	gv.print_exports()
 
+	words = gv.get_curr_ep().get_curr_sub().get_words()
+	gv.append_to_wordbank(words)
+	gv.print_wordbank()
+
 def zero_t():
 	words = gv.get_curr_ep().get_curr_sub().get_words()
 	gv.append_to_wordbank(words)

@@ -22,8 +22,6 @@ if os.path.isfile('./wordbank.txt'):
 		if line != '':
 			gv.set_wordbank_str(line)
 
-gv.append_to_wordbank(['那', '就', '了'])
-
 if __name__ == '__main__':
 	
 	# tkinter root

@@ -14,8 +14,6 @@ def produce_single_audio():
 	print('single\n======')
 
 	episode = gv.get_curr_ep()
-	collection_dir = episode.get_collection_dir()
-	audio_dir = episode.get_audio_dir()
 	temp_dir = episode.get_temp_dir()
 	condensed_dir = episode.get_condensed_dir()
 
