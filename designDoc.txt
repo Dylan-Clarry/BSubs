@@ -1,0 +1,77 @@
+BSubs – Design Doc
+By: Dylan Clarry
+
+
+	1.	Introduction
+		1.1	Purpose
+			The purpose of the following design document will be to describe the software architecture and system design of the BSubs app.
+
+		1.2	Scope
+			The intended audience of this document is for myself to reference while building the app as well as those interested in the development process of BSubs.
+
+		1.3 Definitions, Acronyms, and Abbreviation
+			GUI: Graphical User Interface
+			SRS: Spaced Repitition System
+			Anki: An SRS available for MacOS and Windows PC
+			CAF: Condensed Audio File; An audio file generated from a given video source that only contains audio of spoken language
+			1T: One-Target sentence; a sentence in which all but one word serving as the 'target' is known. Finding 1t's best predict a learning opportunity for the user. The term 1T was coined by the Mas Immersion Approach
+			SQL: Structured Query Language; A language used for manging data in a relational database system
+			PyQt5: the Python implementation of the QT Company's GUI application framework
+
+		1.4	References
+			IEEE. IEEE Std 1016-1998 IEEE Recommended Practice for Software Design Descriptions.
+			IEEE Computer Society, 1998
+			http://ccftp.scu.edu.cn:8090/Download/b4994628-e3e2-450f-882b-488939cecf30.pdf
+
+			Mass Immerrsion Approach
+			https://massimmersionapproach.com/
+
+		1.5	Project Description
+			BSubs is a language learning tool for MacOS that assists the user in creating Anki flashcard decks and language immersion content from native language video sources such as movies and TV shows. BSubs will automatically filter subtitle files to find 1T sentences for the user and export media directly to Anki. Doing so will save the user time in sentence mining media as well as producing decks. This will also reduce Anki media folder bloat as only cards selected by the user will produce media files.
+	
+	2. Overall Description
+		2.1 Project Perspective
+			BSubs is made of two major components; a frontend for the user to interact with and a database to store wordbanks and user data.	
+
+		2.2 Features
+			Dynamic Directory: User selects a working directory as well as create directories for new collections.
+
+			Converter: Using media fields BSubs will generate necessary audio and image files as well as process subtitle files into workable data
+
+			Condenser: BSubs will be able to generate CAF's given only the original source material
+
+			Sentence Miner: BSubs will create and maintain a wordbank of all the users known words in the language. Using this wordbank, BSubs will compare sentences from a source material to find 1T sentences for the user. 0T and 2T+ sentences will not be shown to the user to save time sentence mining. The user will be able to save 1T cards for export.
+
+			Exporter: After the user has selected all of the 1T sentences to export BSubs will produce the media fiels necessary directly into Anki and produce a tsv file to create the cards. Exporting in this way will prevent major media file bloat in Anki as the vast majority of cards for an entire show will go unused. This will also for fast Anki deck production.
+
+		2.3 User Characteristics
+			The typical user of BSubs is an individual learning a foreign language through immersion based methods.
+
+		2.4 Constraints
+			Only available on MacOS
+			Anki is explicitly the SRS in use
+
+		2.5 Assumptions and Dependencies
+			Assumed that the user will provide all source material such as video and subtitle files
+			FFMPEG
+			Various Python language libraries
+
+	3. Planned Implementation
+		3.1 Choice of Language
+			BSubs will be implemented using Python, CSS, and SQL. Python was chosen as it is a multiparadigm language in which an extensive number of dependencies exist that will aid in the production of the apps features. Python also has GUI capabilities through PyQt5 and allows styling through CSS files.
+
+			A database will be implemented using SQL that will be used to store user information and word-banks. The database will be stored on local storage, although future implementations may feature remotestorage.
+
+		3.2 Paradigms & Design Patterns
+			The app will be built following an object oriented programming paradigm using a Singleton design pattern. Singleton was chosen as it offers a simple solution for managing state for a small application.
+
+
+
+
+
+
+
+
+
+
+
