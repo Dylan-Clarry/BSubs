@@ -1,13 +1,14 @@
 # imports
-from PyQt5.QtWidgets import QMainWindow, QPushButton, QDialog, QWidget, QGridLayout, QVBoxLayout, QHBoxLayout, QButtonGroup, QListWidget
+from PyQt5.QtWidgets import QMainWindow, QPushButton, QDialog, QWidget, QGridLayout, QVBoxLayout, QHBoxLayout, QButtonGroup, QListWidget, QToolBar, QMenuBar, QAction
 from PyQt5 import QtGui, QtCore
+from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QRect
 import sys
 
 # BSubs imports
 from gsettings import settings
 
-class Homepage(QWidget):
+class Homepage(QMainWindow):
 	def __init__(self):
 		super().__init__()
 
@@ -18,13 +19,23 @@ class Homepage(QWidget):
 		self.move(100, 100)
 
 		# ==============================
-		# Layouts
-		# ==============================
-
-		# ==============================
 		# Toolbar
 		# ==============================
-		toolbar_layout = QHBoxLayout()
+		# self.toolbar_layout = QMenuBar(self)
+		# exit_menu = self.toolbar_layout.addMenu('File')
+		# exit_action = QAction('Exit', self)
+		# exit_menu.addAction(exit_action)
+
+		toolbar = QToolBar("the toolbar")
+		self.addToolBar(toolbar)
+
+		set_directory_btn = QAction(QIcon("./assets/icons/blue-folder-horizontal.png"), "Set Directory", self)
+		set_directory_btn.triggered.connect(saying)
+		toolbar.addAction(set_directory_btn)
+
+		settings_btn = QAction(QIcon("./assets/icons/gear.png"), "Settings", self)
+		settings_btn.triggered.connect(saying)
+		toolbar.addAction(settings_btn)
 
 		# ==============================
 		# SideBar
@@ -81,12 +92,13 @@ class Homepage(QWidget):
 		# ==============================
 		home_grid = QGridLayout()
 
-		home_grid.addLayout(toolbar_layout, 0, 0)
 		home_grid.addLayout(side_layout, 1, 0)
 		home_grid.addLayout(ep_layout, 1, 1)
 		home_grid.addLayout(bott_bar_left_layout, 2, 0)
 		home_grid.addLayout(bott_bar_right_layout, 2, 1)
-		self.setLayout(home_grid)
+
+		self.setCentralWidget(QWidget())
+		self.centralWidget().setLayout(home_grid)
 
 		print(settings.sayhello())
 
