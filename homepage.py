@@ -92,10 +92,14 @@ class Homepage(QMainWindow):
 		# ==============================
 		home_grid = QGridLayout()
 
-		home_grid.addLayout(side_layout, 1, 0)
-		home_grid.addLayout(ep_layout, 1, 1)
-		home_grid.addLayout(bott_bar_left_layout, 2, 0)
-		home_grid.addLayout(bott_bar_right_layout, 2, 1)
+		home_grid.addLayout(side_layout, 0, 0)
+		home_grid.addLayout(ep_layout, 0, 1)
+		home_grid.addLayout(bott_bar_left_layout, 1, 0)
+		home_grid.addLayout(bott_bar_right_layout, 1, 1)
+
+		home_grid.setRowStretch(0, 3)
+		home_grid.setColumnStretch(0, 1)
+		home_grid.setColumnStretch(1, 3)
 
 		self.setCentralWidget(QWidget())
 		self.centralWidget().setLayout(home_grid)
