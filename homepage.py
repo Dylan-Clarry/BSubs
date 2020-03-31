@@ -1,5 +1,5 @@
 # imports
-from PyQt5.QtWidgets import QMainWindow, QPushButton, QDialog, QWidget, QGridLayout, QVBoxLayout
+from PyQt5.QtWidgets import QMainWindow, QPushButton, QDialog, QWidget, QGridLayout, QVBoxLayout, QHBoxLayout
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtCore import QRect
 import sys
@@ -16,23 +16,48 @@ class Homepage(QWidget):
 		self.setWindowTitle("BSubs")
 		self.setGeometry(100, 100, 960, 640)
 
-		# episode actions layout
-		actions_layout = QGridLayout()
-		actions_layout.setSpacing(0)
-		
-		single_btn = QPushButton("Condense single episode")
-		all_btn = QPushButton("Condense all episodes")
-		mine_btn = QPushButton("Sentence mine episode")
+		# ===============
+		# Layouts
+		# ===============
 
-		actions_layout.addWidget(single_btn, 0, 0) # widget, row, col
-		actions_layout.addWidget(all_btn, 1, 0)
-		actions_layout.addWidget(mine_btn, 2, 0)
+		# ===============
+		# Toolbar
+		# ===============
+		toolbar_layout = QHBoxLayout()
 
-		self.setLayout(actions_layout)
+		# ===============
+		# SideBar
+		# ===============
+		side_layout = QVBoxLayout()
 
-		# actions_widget = QWidget()
-		# actions_widget.setLayout(actions_layout)
-		# self.setCentralWidget(actions_widget)
+		# ===============
+		# Episodes
+		# ===============
+		ep_layout = QGridLayout()
+
+		# ===============
+		# Bottom Bar
+		# ===============
+		bottbar_layout = QHBoxLayout()
+
+		condense_btn = QPushButton("Condenser")
+		miner_btn = QPushButton("Sentence Miner")
+
+		bottbar_layout.addWidget(condense_btn)
+		bottbar_layout.addWidget(miner_btn)
+
+		# ===============
+		# Bind Layouts
+		# ===============
+		home_grid = QGridLayout()
+
+		home_grid.addLayout(toolbar_layout, 0, 0)
+		home_grid.addLayout(side_layout, 1, 0)
+		home_grid.addLayout(ep_layout, 1, 1)
+		home_grid.addLayout(bottbar_layout, 2, 1)
+		self.setLayout(home_grid)
+
+		print(settings.sayhello())
 
 
 	def createBtn(self):

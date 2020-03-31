@@ -1,7 +1,4 @@
-import sys
-sys.path.insert(0, './decorators')
-
-from Singleton import Singleton
+from decorators.Singleton import Singleton
 
 @Singleton
 class Settings:
