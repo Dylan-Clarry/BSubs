@@ -1,5 +1,5 @@
 # imports
-from PyQt5.QtWidgets import QMainWindow, QPushButton, QDialog, QWidget, QGridLayout, QVBoxLayout, QHBoxLayout
+from PyQt5.QtWidgets import QMainWindow, QPushButton, QDialog, QWidget, QGridLayout, QVBoxLayout, QHBoxLayout, QButtonGroup, QListWidget
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtCore import QRect
 import sys
@@ -14,47 +14,78 @@ class Homepage(QWidget):
 		# set window
 		self.setWindowIcon(QtGui.QIcon('./logo.png'))
 		self.setWindowTitle("BSubs")
-		self.setGeometry(100, 100, 960, 640)
+		#self.setGeometry(100, 100, 960, 640)
+		self.move(100, 100)
 
-		# ===============
+		# ==============================
 		# Layouts
-		# ===============
+		# ==============================
 
-		# ===============
+		# ==============================
 		# Toolbar
-		# ===============
+		# ==============================
 		toolbar_layout = QHBoxLayout()
 
-		# ===============
+		# ==============================
 		# SideBar
-		# ===============
+		# ==============================
 		side_layout = QVBoxLayout()
 
-		# ===============
+		side_list = QListWidget()
+		side_list.insertItem(0, '0')
+		side_list.insertItem(1, '1')
+		side_list.insertItem(2, '2')
+
+		side_layout.addWidget(side_list)
+
+		# ==============================
 		# Episodes
-		# ===============
+		# ==============================
 		ep_layout = QGridLayout()
 
-		# ===============
-		# Bottom Bar
-		# ===============
-		bottbar_layout = QHBoxLayout()
+		ep_list = QListWidget()
+		ep_list.insertItem(0, 'aswdfasdfs')
+		ep_list.insertItem(1, 'aswdfasdfs')
+		ep_list.insertItem(2, 'aswdfasdfs')
+
+		ep_layout.addWidget(ep_list)
+
+		# ==============================
+		# Bottom Bar left
+		# ==============================
+		bott_bar_left_layout = QHBoxLayout()
+
+		new_coll_btn = QPushButton("New Collection")
+
+		bott_bar_left_layout.addWidget(new_coll_btn)
+
+		# ==============================
+		# Bottom Bar right
+		# ==============================
+		bott_bar_right_layout = QHBoxLayout()
 
 		condense_btn = QPushButton("Condenser")
 		miner_btn = QPushButton("Sentence Miner")
 
-		bottbar_layout.addWidget(condense_btn)
-		bottbar_layout.addWidget(miner_btn)
+		condense_btn.clicked.connect(saying)
 
-		# ===============
+		bott_bar_right_layout.addWidget(condense_btn)
+		bott_bar_right_layout.addWidget(miner_btn)
+
+		bg = QButtonGroup()
+		bg.addButton(condense_btn)
+		bg.addButton(miner_btn)
+
+		# ==============================
 		# Bind Layouts
-		# ===============
+		# ==============================
 		home_grid = QGridLayout()
 
 		home_grid.addLayout(toolbar_layout, 0, 0)
 		home_grid.addLayout(side_layout, 1, 0)
 		home_grid.addLayout(ep_layout, 1, 1)
-		home_grid.addLayout(bottbar_layout, 2, 1)
+		home_grid.addLayout(bott_bar_left_layout, 2, 0)
+		home_grid.addLayout(bott_bar_right_layout, 2, 1)
 		self.setLayout(home_grid)
 
 		print(settings.sayhello())
@@ -68,3 +99,9 @@ class Homepage(QWidget):
 		# button.setIconSize(QtCore.QSize(40, 40))
 		button.setToolTip("<h2>Close Application</h2>")
 		button.clicked.connect(self.clickMe)
+
+def saying():
+	print("asdfasdfdsfdsaf")
+
+
+
