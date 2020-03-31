@@ -104,7 +104,7 @@ class Homepage(QMainWindow):
 		self.setCentralWidget(QWidget())
 		self.centralWidget().setLayout(home_grid)
 
-		print(settings.sayhello())
+		print(settings.print_all())
 
 
 	def createBtn(self):

@@ -3,17 +3,24 @@ from decorators.Singleton import Singleton
 @Singleton
 class Settings:
 
-	__name = 'bob'
-	__lastname = 'george'
+	__directory = ""
+	__curr_coll = ""
+	__curr_ep = ""
+	__exports = []
+	__wordbank = set()
 
 	def __init__(self):
 		print('Settings created')
 
-	def sayhello(self):
-		print('hi ' + self.__name + ' ' + self.__lastname + '.')
-
-	def return_hello(self):
-		return 'hi ' + self.__name + ' ' + self.__lastname + '.'
+	def print_all(self):
+		print("============")
+		print("All Settings")
+		print("============")
+		print("directory:", self.__directory)
+		print("curr_coll:", self.__curr_coll)
+		print("curr_ep  :", self.__curr_ep)
+		print("exports  :", self.__exports)
+		print("wordbank :", self.__wordbank)
 
 # create settings singleton object
 settings = Settings.instance()
