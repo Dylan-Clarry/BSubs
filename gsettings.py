@@ -10,6 +10,7 @@ class Settings:
 	__exports = []
 	__wordbank = set()
 	__language = ""
+	__app_lang = ""
 
 	def __init__(self):
 		print('Settings created')
@@ -36,6 +37,9 @@ class Settings:
 	def set_language(self, language):
 		self.__language = language
 
+	def set_app_lang(self, app_lang):
+		self.__app_lang = app_lang
+
 	# getters
 	def get_directory(self):
 		return self.__directory
@@ -53,10 +57,13 @@ class Settings:
 		return self.__exports
 
 	def get_wordbank(self):
-		return self.__wordbank\
+		return self.__wordbank
 
 	def get_language(self):
 		return self.__language
+
+	def get_app_lang(self):
+		return self.__app_lang
 
 	def print_all(self):
 		print("============")

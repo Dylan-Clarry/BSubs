@@ -7,6 +7,7 @@ import sys
 
 # BSubs imports
 from gsettings import settings
+from SettingsDialog import SettingsDialog
 
 class Homepage(QMainWindow):
 	def __init__(self):
@@ -21,10 +22,6 @@ class Homepage(QMainWindow):
 		# ==============================
 		# Toolbar
 		# ==============================
-		# self.toolbar_layout = QMenuBar(self)
-		# exit_menu = self.toolbar_layout.addMenu('File')
-		# exit_action = QAction('Exit', self)
-		# exit_menu.addAction(exit_action)
 
 		toolbar = QToolBar("the toolbar")
 		self.addToolBar(toolbar)
@@ -59,9 +56,9 @@ class Homepage(QMainWindow):
 		side_layout = QVBoxLayout()
 
 		side_list = QListWidget()
-		side_list.insertItem(0, '0')
-		side_list.insertItem(1, '1')
-		side_list.insertItem(2, '2')
+		side_list.insertItem(0, '流星花园')
+		side_list.insertItem(1, '歌手')
+		side_list.insertItem(2, '刺客伍六七')
 
 		side_layout.addWidget(side_list)
 
@@ -71,9 +68,9 @@ class Homepage(QMainWindow):
 		ep_layout = QGridLayout()
 
 		ep_list = QListWidget()
-		ep_list.insertItem(0, 'aswdfasdfs')
-		ep_list.insertItem(1, 'aswdfasdfs')
-		ep_list.insertItem(2, 'aswdfasdfs')
+		ep_list.insertItem(0, '流星花园-第一季')
+		ep_list.insertItem(1, '歌手-第二季')
+		ep_list.insertItem(2, '刺客伍六七-第三季')
 
 		ep_layout.addWidget(ep_list)
 
