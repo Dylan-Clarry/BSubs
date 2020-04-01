@@ -29,9 +29,25 @@ class Homepage(QMainWindow):
 		toolbar = QToolBar("the toolbar")
 		self.addToolBar(toolbar)
 
-		set_directory_btn = QAction(QIcon("./assets/icons/blue-folder-horizontal.png"), "Set Directory", self)
+		set_directory_btn = QAction(QIcon("./assets/icons/blue-folder.png"), "Set Directory", self)
 		set_directory_btn.triggered.connect(saying)
 		toolbar.addAction(set_directory_btn)
+
+		set_output_btn = QAction(QIcon("./assets/icons/blue-folder-export.png"), "Set Output Folder", self)
+		set_output_btn.triggered.connect(saying)
+		toolbar.addAction(set_output_btn)
+
+		wordbank_btn = QAction(QIcon("./assets/icons/sort-alphabet-column.png"), "Open Wordbank", self)
+		wordbank_btn.triggered.connect(saying)
+		toolbar.addAction(wordbank_btn)
+
+		edit_exports_btn = QAction(QIcon("./assets/icons/inbox--pencil.png"), "Edit Exports", self)
+		edit_exports_btn.triggered.connect(saying)
+		toolbar.addAction(edit_exports_btn)
+
+		export_btn = QAction(QIcon("./assets/icons/document-export.png"), "Export Cards", self)
+		export_btn.triggered.connect(saying)
+		toolbar.addAction(export_btn)
 
 		settings_btn = QAction(QIcon("./assets/icons/gear.png"), "Settings", self)
 		settings_btn.triggered.connect(saying)
@@ -104,6 +120,10 @@ class Homepage(QMainWindow):
 		self.setCentralWidget(QWidget())
 		self.centralWidget().setLayout(home_grid)
 
+
+		settings.set_directory("jaklsdfj")
+		settings.set_curr_coll("jaklsdfj")
+		settings.set_curr_ep("jaklsdfj")
 		print(settings.print_all())
 
 
