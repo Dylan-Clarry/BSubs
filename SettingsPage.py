@@ -8,11 +8,7 @@ import sys
 # BSubs imports
 from gsettings import settings
 
-class Homepage(QMainWindow):
-	
-	# connection to other pages
-	switch_window = QtCore.pyqtSignal()
-	
+class SettingsPage(QMainWindow):
 	def __init__(self):
 		super().__init__()
 
@@ -50,7 +46,7 @@ class Homepage(QMainWindow):
 		toolbar.addAction(export_btn)
 
 		settings_btn = QAction(QIcon("./assets/icons/gear.png"), "Settings", self)
-		settings_btn.triggered.connect(self.settings_page)
+		settings_btn.triggered.connect(saying)
 		toolbar.addAction(settings_btn)
 
 		# ==============================
@@ -59,9 +55,9 @@ class Homepage(QMainWindow):
 		side_layout = QVBoxLayout()
 
 		side_list = QListWidget()
-		side_list.insertItem(0, '流星花园')
+		side_list.insertItem(0, '流星')
 		side_list.insertItem(1, '歌手')
-		side_list.insertItem(2, '刺客伍六七')
+		side_list.insertItem(2, '刺客')
 
 		side_layout.addWidget(side_list)
 
@@ -71,9 +67,9 @@ class Homepage(QMainWindow):
 		ep_layout = QGridLayout()
 
 		ep_list = QListWidget()
-		ep_list.insertItem(0, '流星花园-第一集')
-		ep_list.insertItem(1, '歌手-第二集')
-		ep_list.insertItem(2, '刺客伍六七-第三集')
+		ep_list.insertItem(0, '第一集')
+		ep_list.insertItem(1, '第二集')
+		ep_list.insertItem(2, '第三集')
 
 		ep_layout.addWidget(ep_list)
 
@@ -120,27 +116,6 @@ class Homepage(QMainWindow):
 		self.setCentralWidget(QWidget())
 		self.centralWidget().setLayout(home_grid)
 
-
-		settings.set_directory("jaklsdfj")
-		settings.set_curr_coll("jaklsdfj")
-		settings.set_curr_ep("jaklsdfj")
-		print(settings.print_all())
-
-
-	def createBtn(self):
-		button = QPushButton(settings.return_hello(), self)
-		#button.move(50, 50)
-		button.setGeometry(QRect(100, 100, 200, 50))
-		# button.setIcon(QtGui.QIcon('logo.png'))
-		# button.setIconSize(QtCore.QSize(40, 40))
-		button.setToolTip("<h2>Close Application</h2>")
-		button.clicked.connect(self.clickMe)
-
-	def settings_page(self):
-		self.switch_window.emit()
-
 def saying():
 	print("asdfasdfdsfdsaf")
-
-
 
