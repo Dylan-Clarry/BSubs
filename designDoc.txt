@@ -34,6 +34,8 @@ By: Dylan Clarry
 			BSubs is made of two major components; a frontend for the user to interact with and a database to store wordbanks and user data.	
 
 		2.2 Features
+
+			** Ver 2.0.0 **
 			Dynamic Directory: User selects a working directory as well as create directories for new collections.
 
 			Converter: Using media fields BSubs will generate necessary audio and image files as well as process subtitle files into workable data
@@ -43,6 +45,17 @@ By: Dylan Clarry
 			Sentence Miner: BSubs will create and maintain a wordbank of all the users known words in the language. Using this wordbank, BSubs will compare sentences from a source material to find 1T sentences for the user. 0T and 2T+ sentences will not be shown to the user to save time sentence mining. The user will be able to save 1T cards for export.
 
 			Exporter: After the user has selected all of the 1T sentences to export BSubs will produce the media fiels necessary directly into Anki and produce a tsv file to create the cards. Exporting in this way will prevent major media file bloat in Anki as the vast majority of cards for an entire show will go unused. This will also for fast Anki deck production.
+
+			** Ver 2.1.0 **
+			show specific priority list: scans all srts of a collection and ranks words based on frequency used in the show to give info to the user about which cards to save
+
+			export full deck: option to export an entire Anki deck for an episode or collection
+
+			** Ver 2.2.0 **
+			full deck time padding: add a time padding to full collection or episode
+
+			individual card padding: change the time padding for each individual card
+
 
 		2.3 User Characteristics
 			The typical user of BSubs is an individual learning a foreign language through immersion based methods.

@@ -11,7 +11,7 @@ from gsettings import settings
 class Homepage(QMainWindow):
 	
 	# connection to other pages
-	switch_window = QtCore.pyqtSignal()
+	sig_settings = QtCore.pyqtSignal()
 	
 	def __init__(self):
 		super().__init__()
@@ -29,13 +29,13 @@ class Homepage(QMainWindow):
 		toolbar = QToolBar("the toolbar")
 		self.addToolBar(toolbar)
 
-		set_directory_btn = QAction(QIcon("./assets/icons/blue-folder.png"), "Set Directory", self)
-		set_directory_btn.triggered.connect(saying)
-		toolbar.addAction(set_directory_btn)
+		# set_directory_btn = QAction(QIcon("./assets/icons/blue-folder.png"), "Set Directory", self)
+		# set_directory_btn.triggered.connect(saying)
+		# toolbar.addAction(set_directory_btn)
 
-		set_output_btn = QAction(QIcon("./assets/icons/blue-folder-export.png"), "Set Output Folder", self)
-		set_output_btn.triggered.connect(saying)
-		toolbar.addAction(set_output_btn)
+		# set_output_btn = QAction(QIcon("./assets/icons/blue-folder-export.png"), "Set Output Folder", self)
+		# set_output_btn.triggered.connect(saying)
+		# toolbar.addAction(set_output_btn)
 
 		wordbank_btn = QAction(QIcon("./assets/icons/sort-alphabet-column.png"), "Open Wordbank", self)
 		wordbank_btn.triggered.connect(saying)
@@ -137,7 +137,7 @@ class Homepage(QMainWindow):
 		button.clicked.connect(self.clickMe)
 
 	def settings_page(self):
-		self.switch_window.emit()
+		self.sig_settings.emit()
 
 def saying():
 	print("asdfasdfdsfdsaf")
