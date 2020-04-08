@@ -1,8 +1,9 @@
 # imports
-from PyQt5.QtWidgets import QMainWindow, QPushButton, QDialog, QWidget, QGridLayout, QVBoxLayout, QHBoxLayout, QButtonGroup, QListWidget, QToolBar, QMenuBar, QAction, QLabel, QLineEdit, QFormLayout, QComboBox
+from PyQt5.QtWidgets import QMainWindow, QFileDialog, QPushButton, QDialog, QWidget, QGridLayout, QVBoxLayout, QHBoxLayout, QButtonGroup, QListWidget, QToolBar, QMenuBar, QAction, QLabel, QLineEdit, QFormLayout, QComboBox
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QRect
+import easygui
 import sys
 
 # BSubs imports
@@ -29,7 +30,6 @@ class SettingsPage(QMainWindow):
 
 		form_box.addRow(dir_lbl, dir_input)
 
-
 		# output directory row
 		output_dir_lbl = QLabel("Directory")
 		output_dir_input = QLineEdit()
@@ -42,6 +42,53 @@ class SettingsPage(QMainWindow):
 		lang_combox.addItem("Chinese (普通话)")
 
 		form_box.addRow(lang_lbl, lang_combox)
+
+		# buttons row
+		cancel_btn = QPushButton("Cancel")
+		save_btn = QPushButton("Save Changes")
+
+		cancel_btn.clicked.connect(self.choose_directory)
+
+		form_box.addRow(cancel_btn, save_btn)
+
+
+		# fbox = QFormLayout()
+
+		# l1 = QLabel("Name")
+		# nm = QLineEdit()
+
+		# fbox.addRow(l1,nm)
+
+		# vbox = QVBoxLayout()
+
+		# l2 = QLabel("Address")
+		# add1 = QLineEdit()
+		# add2 = QLineEdit()
+		# vbox.addWidget(add1)
+		# vbox.addWidget(add2)
+		
+		# fbox.addRow(l2,vbox)
+
+		# hbox = QHBoxLayout()
+
+		# r1 = QRadioButton("Male")
+		# r2 = QRadioButton("Female")
+		# hbox.addWidget(r1)
+		# hbox.addWidget(r2)
+		# hbox.addStretch()
+
+
+		# fbox.addRow(QLabel("sex"),hbox)
+		# fbox.addRow(QPushButton("Submit"), QPushButton("Cancel"))
+
+
+
+
+
+		# formbox size policy
+		# form_box_policy = form_box.sizePolicy()
+		# policy.setHorizontalStretch(1)
+		# form_box.setSizePolicy(form_box_policy)
 
 
 		# ==============================
@@ -56,19 +103,19 @@ class SettingsPage(QMainWindow):
 		# ==============================
 		# Bottom Bar right
 		# ==============================
-		bott_bar_layout = QHBoxLayout()
+		# bott_bar_layout = QHBoxLayout()
 
-		condense_btn = QPushButton("Condenser")
-		miner_btn = QPushButton("Sentence Miner")
+		# cancel_btn = QPushButton("Cancel")
+		# save_changes_btn = QPushButton("Save Changes")
 
-		condense_btn.clicked.connect(saying)
+		# cancel_btn.clicked.connect(choose_directory)
 
-		bott_bar_layout.addWidget(condense_btn)
-		bott_bar_layout.addWidget(miner_btn)
+		# bott_bar_layout.addWidget(cancel_btn)
+		# bott_bar_layout.addWidget(save_changes_btn)
 
-		bg = QButtonGroup()
-		bg.addButton(condense_btn)
-		bg.addButton(miner_btn)
+		# bg = QButtonGroup()
+		# bg.addButton(cancel_btn)
+		# bg.addButton(save_changes_btn)
 
 		# ==============================
 		# Bind Layouts
@@ -76,15 +123,42 @@ class SettingsPage(QMainWindow):
 		settings_grid = QGridLayout()
 
 		settings_grid.addLayout(form_box, 0, 0)
-		settings_grid.addLayout(bott_bar_layout, 1, 0)
+		#settings_grid.addLayout(bott_bar_layout)
 
-		# settings_grid.setRowStretch(0, 3)
-		# settings_grid.setColumnStretch(0, 1)
+		settings_grid.setRowStretch(0, 6)
+		settings_grid.setColumnStretch(0, 3)
 		# settings_grid.setColumnStretch(1, 3)
 
 		self.setCentralWidget(QWidget())
 		self.centralWidget().setLayout(settings_grid)
 
+	# lets the user select a directory
+	def choose_directory(self):
+		print("hellos from directory")
+		directory = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
+		print(directory)
+		settings.set_directory(directory)
+		settings.print_all()
+		# return directory
+
 def saying():
 	print("asdfasdfdsfdsaf")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
