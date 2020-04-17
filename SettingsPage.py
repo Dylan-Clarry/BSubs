@@ -32,7 +32,7 @@ class SettingsPage(QMainWindow):
 		dir_layout.addWidget(dir_target_lbl, 0, 1)
 
 		change_dir_btn = QPushButton("Change Directory")
-		change_dir_btn.clicked.connect(self.choose_directory)
+		change_dir_btn.clicked.connect(lambda: self.choose_directory(dir_target_lbl))
 		dir_layout.addWidget(change_dir_btn, 0, 2)
 
 		# row 1
@@ -43,7 +43,7 @@ class SettingsPage(QMainWindow):
 		dir_layout.addWidget(output_dir_target_lbl, 1, 1)
 
 		change_output_dir_btn = QPushButton("Change Output Directory")
-		change_output_dir_btn.clicked.connect(self.choose_directory)
+		change_output_dir_btn.clicked.connect(lambda: self.choose_directory(output_dir_target_lbl))
 		dir_layout.addWidget(change_output_dir_btn, 1, 2)
 
 		# row 2
@@ -73,21 +73,20 @@ class SettingsPage(QMainWindow):
 		self.setCentralWidget(QWidget())
 		self.centralWidget().setLayout(settings_grid)
 
-	# lets the user select a directory
-	def choose_directory(self):
+	# select directory prompt and updates label
+	def choose_directory(self, lbl):
 		print("hellos from directory")
-		directory = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
-		print(directory)
-		settings.set_directory(directory)
-		settings.print_all()
-		# return directory
-
-def saying():
-	print("asdfasdfdsfdsaf")
+		lbl.setText(str(QFileDialog.getExistingDirectory(self, "Select Directory")))
 
 
 
-
+	# lets the user select a directory
+	# def choose_directory(self, lbl):
+	# 	print("hellos from directory")
+	# 	directory = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
+	# 	print(directory)
+	# 	settings.set_directory(directory)
+	# 	settings.print_all()
 
 
 
