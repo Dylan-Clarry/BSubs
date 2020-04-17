@@ -20,114 +20,55 @@ class SettingsPage(QMainWindow):
 		self.move(100, 100)
 
 		# ==============================
-		# Form Layout
+		# Dir Layout
 		# ==============================
-		form_box = QFormLayout()
+		dir_layout = QGridLayout()
 
-		# directory row
+		# row 0
 		dir_lbl = QLabel("Directory")
-		dir_input = QLineEdit()
+		dir_layout.addWidget(dir_lbl, 0, 0)
 
-		form_box.addRow(dir_lbl, dir_input)
+		dir_target_lbl = QLabel("/Users/dylanclarry/Documents/projects/BSubs")
+		dir_layout.addWidget(dir_target_lbl, 0, 1)
 
-		# output directory row
-		output_dir_lbl = QLabel("Directory")
-		output_dir_input = QLineEdit()
+		change_dir_btn = QPushButton("Change Directory")
+		change_dir_btn.clicked.connect(self.choose_directory)
+		dir_layout.addWidget(change_dir_btn, 0, 2)
 
-		form_box.addRow(output_dir_lbl, output_dir_input)
+		# row 1
+		output_dir_lbl = QLabel("Output Directory")
+		dir_layout.addWidget(output_dir_lbl, 1, 0)
 
-		# language select row
+		output_dir_target_lbl = QLabel("/Users/dylanclarry/Documents/projects/BSubs")
+		dir_layout.addWidget(output_dir_target_lbl, 1, 1)
+
+		change_output_dir_btn = QPushButton("Change Output Directory")
+		change_output_dir_btn.clicked.connect(self.choose_directory)
+		dir_layout.addWidget(change_output_dir_btn, 1, 2)
+
+		# row 2
 		lang_lbl = QLabel("Language")
+		dir_layout.addWidget(lang_lbl, 2, 0)
+
 		lang_combox = QComboBox()
-		lang_combox.addItem("Chinese (普通话)")
+		lang_combox.addItem("Chinese (简体中文)")
+		lang_combox.addItem("Japanese (日本語)")
+		dir_layout.addWidget(lang_combox, 2, 1)
 
-		form_box.addRow(lang_lbl, lang_combox)
-
-		# buttons row
-		cancel_btn = QPushButton("Cancel")
-		save_btn = QPushButton("Save Changes")
-
-		cancel_btn.clicked.connect(self.choose_directory)
-
-		form_box.addRow(cancel_btn, save_btn)
-
-
-		# fbox = QFormLayout()
-
-		# l1 = QLabel("Name")
-		# nm = QLineEdit()
-
-		# fbox.addRow(l1,nm)
-
-		# vbox = QVBoxLayout()
-
-		# l2 = QLabel("Address")
-		# add1 = QLineEdit()
-		# add2 = QLineEdit()
-		# vbox.addWidget(add1)
-		# vbox.addWidget(add2)
-		
-		# fbox.addRow(l2,vbox)
-
-		# hbox = QHBoxLayout()
-
-		# r1 = QRadioButton("Male")
-		# r2 = QRadioButton("Female")
-		# hbox.addWidget(r1)
-		# hbox.addWidget(r2)
-		# hbox.addStretch()
-
-
-		# fbox.addRow(QLabel("sex"),hbox)
-		# fbox.addRow(QPushButton("Submit"), QPushButton("Cancel"))
-
-
-
-
-
-		# formbox size policy
-		# form_box_policy = form_box.sizePolicy()
-		# policy.setHorizontalStretch(1)
-		# form_box.setSizePolicy(form_box_policy)
-
-
-		# ==============================
-		# Bottom Bar
-		# ==============================
-		bott_bar_left_layout = QHBoxLayout()
-
-		new_coll_btn = QPushButton("New Collection")
-
-		bott_bar_left_layout.addWidget(new_coll_btn)
-
-		# ==============================
-		# Bottom Bar right
-		# ==============================
-		# bott_bar_layout = QHBoxLayout()
-
-		# cancel_btn = QPushButton("Cancel")
-		# save_changes_btn = QPushButton("Save Changes")
-
-		# cancel_btn.clicked.connect(choose_directory)
-
-		# bott_bar_layout.addWidget(cancel_btn)
-		# bott_bar_layout.addWidget(save_changes_btn)
-
-		# bg = QButtonGroup()
-		# bg.addButton(cancel_btn)
-		# bg.addButton(save_changes_btn)
+		# row 3
+		save_changes_btn = QPushButton("Save Changes")
+		#save_changes_btn.triggered.connect(self.settings_page)
+		dir_layout.addWidget(save_changes_btn, 3, 2)
 
 		# ==============================
 		# Bind Layouts
 		# ==============================
 		settings_grid = QGridLayout()
 
-		settings_grid.addLayout(form_box, 0, 0)
-		#settings_grid.addLayout(bott_bar_layout)
+		settings_grid.addLayout(dir_layout, 0, 0)
 
-		settings_grid.setRowStretch(0, 6)
-		settings_grid.setColumnStretch(0, 3)
-		# settings_grid.setColumnStretch(1, 3)
+		settings_grid.setRowStretch(0, 0)
+		settings_grid.setColumnStretch(0, 0)
 
 		self.setCentralWidget(QWidget())
 		self.centralWidget().setLayout(settings_grid)
