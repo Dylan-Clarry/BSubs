@@ -7,6 +7,7 @@ import sys
 
 # BSubs imports
 from gsettings import Settings
+import pages.homepage_functions as hpf
 
 # set global settings
 settings = Settings.instance()
@@ -32,14 +33,6 @@ class Homepage(QMainWindow):
 		toolbar = QToolBar("the toolbar")
 		self.addToolBar(toolbar)
 
-		# set_directory_btn = QAction(QIcon("./assets/icons/blue-folder.png"), "Set Directory", self)
-		# set_directory_btn.triggered.connect(saying)
-		# toolbar.addAction(set_directory_btn)
-
-		# set_output_btn = QAction(QIcon("./assets/icons/blue-folder-export.png"), "Set Output Folder", self)
-		# set_output_btn.triggered.connect(saying)
-		# toolbar.addAction(set_output_btn)
-
 		wordbank_btn = QAction(QIcon("./assets/icons/sort-alphabet-column.png"), "Open Wordbank", self)
 		wordbank_btn.triggered.connect(saying)
 		toolbar.addAction(wordbank_btn)
@@ -61,19 +54,20 @@ class Homepage(QMainWindow):
 		# ==============================
 		side_layout = QVBoxLayout()
 
-		side_list = QListWidget()
-		side_list.insertItem(0, '流星花园')
-		side_list.insertItem(1, '歌手')
-		side_list.insertItem(2, '刺客伍六七')
+		coll_list = QListWidget()
+		
+		# created early for update reference
+		ep_list = QListWidget()
 
-		side_layout.addWidget(side_list)
+		hpf.set_collections(coll_list, ep_list)
+
+		side_layout.addWidget(coll_list)
 
 		# ==============================
 		# Episodes
 		# ==============================
 		ep_layout = QGridLayout()
 
-		ep_list = QListWidget()
 		ep_list.insertItem(0, '流星花园-第一集')
 		ep_list.insertItem(1, '歌手-第二集')
 		ep_list.insertItem(2, '刺客伍六七-第三集')
@@ -86,6 +80,8 @@ class Homepage(QMainWindow):
 		bott_bar_left_layout = QHBoxLayout()
 
 		new_coll_btn = QPushButton("New Collection")
+
+		new_coll_btn.clicked.connect(lambda: hpf.set_collections(coll_list))
 
 		bott_bar_left_layout.addWidget(new_coll_btn)
 

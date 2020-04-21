@@ -57,9 +57,10 @@ class SettingsPage(QDialog):
 		dir_layout.addWidget(lang_lbl, 2, 0)
 
 		lang_combox = QComboBox()
-		lang_items = ["Chinese (简体中文)", "Japanese (日本語)"]
-		# lang_combox.addItem("Chinese (简体中文)")
-		# lang_combox.addItem("Japanese (日本語)")
+		lang_items = [
+				"Chinese (简体中文)",
+				"Japanese (日本語)"
+				]
 		lang_combox.addItems(lang_items)
 		lang_combox.setCurrentIndex(lang_items.index(settings.get_language()))
 		dir_layout.addWidget(lang_combox, 2, 1)

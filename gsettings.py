@@ -26,6 +26,8 @@ class Settings:
 		self.__curr_coll = curr_coll
 
 	def set_curr_ep(self, curr_ep):
+		if curr_ep != "" and curr_ep.find('.mp4') == -1:
+			curr_ep += '.mp4'
 		self.__curr_ep = curr_ep
 
 	def set_exports(self, exports):
@@ -65,6 +67,19 @@ class Settings:
 	def get_app_lang(self):
 		return self.__app_lang
 
+	# folder getters
+	def get_coll_dir(self):
+		return self.__directory + '/' + self.__curr_coll
+
+	def get_video_dir(self):
+		return self.__directory + '/' + self.__curr_coll + '/video'
+
+	def get_audio_dir(self):
+		return self.__directory + '/' + self.__curr_coll + '/audio'
+
+	def get_ep_dir(self):
+		return self.__directory + '/' + self.__curr_coll + '/' + self.__curr_ep
+
 	def print_all(self):
 		print("============")
 		print("All Settings")
@@ -76,11 +91,6 @@ class Settings:
 		print("exports   :", self.__exports)
 		print("wordbank  :", self.__wordbank)
 		print("language  :", self.__language)
-
-# create settings singleton object
-# def init_settings():
-# 	global settings
-# 	settings = Settings.instance()
 
 
 

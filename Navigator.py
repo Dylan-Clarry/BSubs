@@ -1,5 +1,5 @@
-from Homepage import Homepage
-from SettingsPage import SettingsPage
+from pages.Homepage import Homepage
+from pages.SettingsPage import SettingsPage
 
 class Navigator:
 
