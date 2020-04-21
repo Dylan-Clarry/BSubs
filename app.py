@@ -1,9 +1,17 @@
 from PyQt5.QtWidgets import QApplication
 import sys
 
+# module imports
+import file_system as fs
+import gsettings as gs
 from Navigator import Navigator
 
 def main():
+	
+	# read settings from settings file
+	fs.read_settings_file()
+
+	# run app at homepage
 	App = QApplication(sys.argv)
 	navigator = Navigator()
 	navigator.show_homepage()

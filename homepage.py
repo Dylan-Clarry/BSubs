@@ -6,13 +6,16 @@ from PyQt5.QtCore import QRect
 import sys
 
 # BSubs imports
-from gsettings import settings
+from gsettings import Settings
+
+# set global settings
+settings = Settings.instance()
 
 class Homepage(QMainWindow):
 	
 	# connection to other pages
 	sig_settings = QtCore.pyqtSignal()
-	
+
 	def __init__(self):
 		super().__init__()
 
@@ -119,13 +122,6 @@ class Homepage(QMainWindow):
 
 		self.setCentralWidget(QWidget())
 		self.centralWidget().setLayout(home_grid)
-
-
-		settings.set_directory("jaklsdfj")
-		settings.set_curr_coll("jaklsdfj")
-		settings.set_curr_ep("jaklsdfj")
-		print(settings.print_all())
-
 
 	def createBtn(self):
 		button = QPushButton(settings.return_hello(), self)

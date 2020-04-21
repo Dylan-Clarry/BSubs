@@ -78,4 +78,9 @@ class Settings:
 		print("language  :", self.__language)
 
 # create settings singleton object
-settings = Settings.instance()
+# def init_settings():
+# 	global settings
+# 	settings = Settings.instance()
+
+
+
