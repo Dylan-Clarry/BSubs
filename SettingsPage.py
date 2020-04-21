@@ -9,7 +9,7 @@ import sys
 # BSubs imports
 from gsettings import settings
 
-class SettingsPage(QMainWindow):
+class SettingsPage(QDialog):
 	def __init__(self):
 		super().__init__()
 
@@ -57,7 +57,7 @@ class SettingsPage(QMainWindow):
 
 		# row 3
 		save_changes_btn = QPushButton("Save Changes")
-		#save_changes_btn.triggered.connect(self.settings_page)
+		save_changes_btn.clicked.connect(lambda: self.save_settings(dir_target_lbl, output_dir_target_lbl, lang_combox))
 		dir_layout.addWidget(save_changes_btn, 3, 2)
 
 		# ==============================
@@ -70,28 +70,30 @@ class SettingsPage(QMainWindow):
 		settings_grid.setRowStretch(0, 0)
 		settings_grid.setColumnStretch(0, 0)
 
-		self.setCentralWidget(QWidget())
-		self.centralWidget().setLayout(settings_grid)
+		self.setLayout(settings_grid)
+
+		# self.setCentralWidget(QWidget())
+		# self.centralWidget().setLayout(settings_grid)
 
 	# select directory prompt and updates label
 	def choose_directory(self, lbl):
 		print("hellos from directory")
-		lbl.setText(str(QFileDialog.getExistingDirectory(self, "Select Directory")))
+		try:
+			directory = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
+			if directory != '':
+				lbl.setText(directory)
+		except:
+			print("directory change cancelled.")
 
-
-
-	# lets the user select a directory
-	# def choose_directory(self, lbl):
-	# 	print("hellos from directory")
-	# 	directory = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
-	# 	print(directory)
-	# 	settings.set_directory(directory)
-	# 	settings.print_all()
-
-
-
-
-
+	# saves new settings to the global settings
+	def save_settings(self, directory, output, lang):
+		print("directory: ", directory.text())
+		print("output: ", output.text())
+		print("lang: ", str(lang.currentText()))
+		settings.set_directory(directory.text())
+		settings.set_output_dir(output.text())
+		settings.set_language(str(lang.currentText()))
+		settings.print_all()
 
 
 

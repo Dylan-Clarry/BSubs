@@ -62,6 +62,12 @@ By: Dylan Clarry
 			show frequency list: BSubs creates a frequency list fro each individual show that can be compared against the users wordbank to help predict the next best show to mine from
 
 
+			IDEAS
+			=====
+			- if the current card is better than a card already saved for export, replace the card for export
+			- one the spot remove word from wordbank
+
+
 		2.3 User Characteristics
 			The typical user of BSubs is an individual learning a foreign language through immersion based methods.
 
