@@ -59,13 +59,16 @@ By: Dylan Clarry
 			** Ver 2.3.0 **
 			speed reader: iteratively plays sub audio track and displays text for the user to read along with (at the same rate as conensed audio files)
 
-			show frequency list: BSubs creates a frequency list fro each individual show that can be compared against the users wordbank to help predict the next best show to mine from
+			show frequency list: BSubs creates a frequency list for each individual show that can be compared against the users wordbank to help predict the next best show to mine from
 
 
 			IDEAS
 			=====
 			- if the current card is better than a card already saved for export, replace the card for export
 			- one the spot remove word from wordbank
+			- save exports so the user can end the session and start where they left off later
+			- srt re-timer
+			- View recent words added to wordbank to undo
 
 
 		2.3 User Characteristics
@@ -88,6 +91,138 @@ By: Dylan Clarry
 
 		3.2 Paradigms & Design Patterns
 			The app will be built following an object oriented programming paradigm using a Singleton design pattern. Singleton was chosen as it offers a simple solution for managing state for a small application.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Navigator
+=========
+
+- Settings
+- New Collection
+- Condenser
+- Sentence Miner
+- Exports
+
+
+
+
+
+
+
+
+Condenser
+=========
+
+input:
+		(directory, collection)
+
+display:
+		Checklist of episodes to be condensed
+
+output:
+		Outputs condensed audio files to directory/condensed
+
+
+
+Sentence Miner
+==============
+
+input:
+		(directory, output_dir, collection, episode, wordbank, language)
+
+display:
+		Default display is auto sentence miner, showing/playing the current image, sentence, and audio clip for the current sub. Another tab will let you search for a specific sentence in the current episode.
+
+output:
+		void:: updates current global exports along the way
+
+
+
+New Collection
+==============
+
+input:
+		()
+
+display:
+		input fields for name of collection
+
+output:
+		new directories in directory/{collection}
+
+
+
+Exports
+=======
+
+input:
+		(exports)
+
+display:
+		All current exports along with their sentence and timings with the option to adjust and play audio and to delete exports
+
+output:
+		void:: update global exports
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def createBtn(self):
+		button = QPushButton(settings.return_hello(), self)
+		#button.move(50, 50)
+		button.setGeometry(QRect(100, 100, 200, 50))
+		# button.setIcon(QtGui.QIcon('logo.png'))
+		# button.setIconSize(QtCore.QSize(40, 40))
+		button.setToolTip("<h2>Close Application</h2>")
+		button.clicked.connect(self.clickMe)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

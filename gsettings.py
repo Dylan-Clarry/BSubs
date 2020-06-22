@@ -1,3 +1,4 @@
+import os
 from decorators.Singleton import Singleton
 
 @Singleton
@@ -67,6 +68,9 @@ class Settings:
 	def get_app_lang(self):
 		return self.__app_lang
 
+	def get_curr_collections(self):
+		return list(os.walk(self.__directory))[0][1]
+
 	# folder getters
 	def get_coll_dir(self):
 		return self.__directory + '/' + self.__curr_coll
@@ -81,7 +85,7 @@ class Settings:
 		return self.__directory + '/' + self.__curr_coll + '/' + self.__curr_ep
 
 	def print_all(self):
-		print("============")
+		print("\n============")
 		print("All Settings")
 		print("============")
 		print("directory :", self.__directory)

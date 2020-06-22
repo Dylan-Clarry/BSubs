@@ -1,5 +1,5 @@
 # imports
-from PyQt5.QtWidgets import QMainWindow, QFileDialog, QPushButton, QDialog, QWidget, QGridLayout, QVBoxLayout, QHBoxLayout, QButtonGroup, QListWidget, QToolBar, QMenuBar, QAction, QLabel, QLineEdit, QFormLayout, QComboBox
+from PyQt5.QtWidgets import QDialog, QGridLayout, QFileDialog, QLabel, QPushButton, QComboBox
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QRect
@@ -26,7 +26,9 @@ class SettingsPage(QDialog):
 		# ==============================
 		dir_layout = QGridLayout()
 
+		# ********************
 		# row 0
+		# ********************
 		dir_lbl = QLabel("Directory")
 		dir_layout.addWidget(dir_lbl, 0, 0)
 

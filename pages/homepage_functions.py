@@ -1,6 +1,9 @@
 # imports
 import os, helper
 
+# page imports
+from pages.NewCollectionPage import NewCollectionPage
+
 # module imports
 from gsettings import Settings
 
@@ -9,12 +12,11 @@ settings = Settings.instance()
 
 # sets the collections for the current working directory
 def set_collections(coll_widget, ep_widget):
-	print("called")
 	directory = settings.get_directory()
-	print(directory)
+	print('dir:', directory)
 
 	if(directory != ""):
-		collections = list(os.walk(directory))[0][1]
+		collections = settings.get_curr_collections()
 		print("collections:", collections)
 
 		for coll in collections:
@@ -49,3 +51,6 @@ def set_episodes(item, ep_widget):
 def set_ep_sel(item):
 	settings.set_curr_ep(item.text())
 	settings.print_all()
+
+def init_new_coll():
+	directory = settings.get_directory()

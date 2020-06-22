@@ -1,5 +1,6 @@
 # imports
 import re
+from PyQt5.QtWidgets import QMessageBox
 
 # mergesort for chinese titles
 def mergesort(myList):
@@ -21,7 +22,6 @@ def mergesort(myList):
 		
 		# Iterator for the main list
 		k = 0
-		
 		while i < len(left) and j < len(right):
 
 			# get title name numbers only
@@ -35,7 +35,6 @@ def mergesort(myList):
 
 				# Move the iterator forward
 				i += 1
-
 			else:
 				myList[k] = right[j]
 				j += 1
@@ -48,8 +47,14 @@ def mergesort(myList):
 			myList[k] = left[i]
 			i += 1
 			k += 1
-
 		while j < len(right):
 			myList[k] = right[j]
 			j += 1
 			k += 1
+
+
+def raise_message(title, message):
+	msg = QMessageBox()
+	msg.setWindowTitle(title)
+	msg.setText(message)
+	retval = msg.exec_()
